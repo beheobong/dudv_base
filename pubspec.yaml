@@ -1,7 +1,7 @@
 name: dudv_base
 description: MPV pattern for flutter.
-version: 0.0.1
-homepage: https://github.com/beheobong/flutter_base
+version: 0.0.2+1
+homepage: https://github.com/beheobong/dudv_base
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
