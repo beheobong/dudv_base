@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:dudv_base/dudv_base.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('dudv_base');
@@ -18,6 +17,5 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await DudvBase.platformVersion, '42');
   });
 }

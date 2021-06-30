@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-
 class NoDataView extends StatelessWidget {
+  const NoDataView({
+    Key key,
+    this.title,
+    this.isListView = false,
+    this.size,
+    this.style,
+  }) : super(key: key);
+
   final String title;
   final bool isListView;
   final double size;
+  final TextStyle style;
 
-  const NoDataView({Key key, this.title, this.isListView = false, this.size})
-      : super(key: key);
   @override
   Widget build(BuildContext context) {
     String content;
@@ -17,7 +23,7 @@ class NoDataView extends StatelessWidget {
     }
     var tv = Text(
       content ?? 'No data',
-      style: TextStyle(color: Colors.black),
+      style: style ?? TextStyle(color: Colors.black),
     );
 
     if (isListView)

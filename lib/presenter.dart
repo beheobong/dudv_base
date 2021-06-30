@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'contract.dart';
-import 'utils.dart';
 
 abstract class Presenter {
   Presenter(

@@ -1,18 +1,19 @@
-// You have generated a new plugin project without
-// specifying the `--platforms` flag. A plugin project supports no platforms is generated.
-// To add platforms, run `flutter create -t plugin --platforms <platforms> .` under the same
-// directory. You can also find a detailed instruction on how to add platforms in the `pubspec.yaml` at https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
+export 'api_client.dart';
+export 'api_loadmore.dart';
+export 'const.dart';
+export 'contract.dart';
+export 'form_presenter.dart';
+export 'list_presenter.dart';
+export 'loadmodel_presenter.dart';
+export 'presenter.dart';
+export 'submit_presenter.dart';
+export 'utils.dart';
 
-import 'dart:async';
-
-import 'package:flutter/services.dart';
-
-class DudvBase {
-  static const MethodChannel _channel =
-      const MethodChannel('dudv_base');
-
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-}
+export 'view/appbar_search_view.dart';
+export 'view/form_input_view.dart';
+export 'view/guide_permission_view.dart';
+export 'view/lin_view.dart';
+export 'view/line_or_line_view.dart';
+export 'view/no_data_view.dart';
+export 'view/title_require_view.dart';
+export 'themes/styles.dart';

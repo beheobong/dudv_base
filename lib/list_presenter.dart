@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'contract.dart';
 import 'utils.dart';
@@ -15,6 +16,9 @@ mixin ListPresenter {
   set isFirst(bool value);
   final ScrollController controller = ScrollController();
   Future apiLoadData({bool isFirst});
+   void showAppBar() {}
+
+  void hideAppBar() {}
 
   init() {
     controller.addListener(_listenter);
@@ -46,10 +50,20 @@ mixin ListPresenter {
     }
   }
 
-  void _listenter() {
+ void _listenter() {
     final maxScroll = controller.position.maxScrollExtent;
     if (controller.offset >= maxScroll && !controller.position.outOfRange) {
       loadMore();
+    }
+    ScrollPosition position = controller.position;
+    if (position.userScrollDirection == ScrollDirection.reverse) {
+      hideAppBar();
+    }
+    if (position.userScrollDirection == ScrollDirection.forward) {
+      showAppBar();
+    }
+    if(position.pixels == 0){
+       hideAppBar();
     }
   }
 
