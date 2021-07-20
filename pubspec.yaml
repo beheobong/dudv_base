@@ -14,7 +14,7 @@ dependencies:
   permission_handler: ^5.0.1+1
   fluttertoast: ^7.1.6
   dio: ^3.0.10
-  logger:
+  logger: ^0.9.4
 
 dev_dependencies:
   flutter_test:
