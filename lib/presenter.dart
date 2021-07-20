@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:dudv_base/loading_handle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ abstract class Presenter {
   List list = [];
   bool isFirst = true;
   String sort;
+  final LoadingHandle loading = LoadingHandle();
 
   Future onRefresh() {
     loadData();
@@ -43,6 +45,14 @@ abstract class Presenter {
 
   void onBack({value}) {
     Navigator.of(context).pop(value);
+  }
+
+  void showLoading() {
+    return loading.showLoading(context);
+  }
+
+  Future hideLoading() {
+    return loading.hideLoading(context);
   }
 
   Widget loadingView2({Brightness brightness}) {

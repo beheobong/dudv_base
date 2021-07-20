@@ -111,4 +111,26 @@ class Utils {
   static bool isNotEmpty(String text) {
     return !isEmpty(text);
   }
+
+  static Future showModalDialog({
+    @required BuildContext context,
+    @required Widget view,
+    bool useRootNavigator = false,
+  }) {
+    return showDialog(
+        context: context,
+        useRootNavigator: useRootNavigator,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: Dialog(
+              elevation: 10,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: view,
+            ),
+          );
+        });
+  }
 }

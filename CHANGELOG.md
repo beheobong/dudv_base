@@ -1,4 +1,14 @@
-## [0.0.2] - 2021-06-30.
+## [0.0.3] - 2021-06-30.
+
+* add logger
+* add loading handle
+* add btn_view
+* add action_noti_view
+* add loading_view
+* update submit_presenter
+* update loadmodel_presenter
+
+## [0.0.2+1] - 2021-06-30.
 
 * change url home
 

@@ -1,6 +1,6 @@
 name: dudv_base
 description: MPV pattern for flutter.
-version: 0.0.2+1
+version: 0.0.3
 homepage: https://github.com/beheobong/dudv_base
 
 environment:
@@ -14,6 +14,7 @@ dependencies:
   permission_handler: ^5.0.1+1
   fluttertoast: ^7.1.6
   dio: ^3.0.10
+  logger:
 
 dev_dependencies:
   flutter_test:

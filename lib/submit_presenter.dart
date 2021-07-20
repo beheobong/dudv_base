@@ -10,12 +10,12 @@ mixin SubmitPresenter {
   bool _isShowDialog = false;
   BuildContext get context;
   Contract get view;
-  Future apiSubmit();
+  List<Future> get apiSubmits;
 
-  Future onSubmit({String messageSuccess}) async {
+  Future onSubmit({String messageSuccess, int index = 0}) async {
     showLoading();
     try {
-      final result = await apiSubmit();
+      final result = await apiSubmits[index];
       await hideLoading();
       if (messageSuccess != null) {
         Utils.showToast(messageSuccess);
