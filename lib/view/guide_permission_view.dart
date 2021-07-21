@@ -11,7 +11,6 @@ class IconIOS {
   static final String iPhotosPrivacy = 'assets/icons_ios/ios_photos.png';
   static final String iPrivacy = 'assets/icons_ios/ios_privacy.png';
   static final String icMicrophone = 'assets/icons_ios/microphone_ios.png';
-
 }
 
 class RowStep extends StatelessWidget {
@@ -32,7 +31,7 @@ class RowStep extends StatelessWidget {
                 width: 35,
                 height: 35,
                 decoration: BoxDecoration(
-                  image: DecorationImage( 
+                  image: DecorationImage(
                     image: AssetImage(icon),
                     fit: BoxFit.contain,
                   ),
@@ -47,7 +46,6 @@ class RowStep extends StatelessWidget {
     );
   }
 }
-
 
 class GuidePermissionView extends StatelessWidget {
   final Permission permission;
@@ -90,21 +88,17 @@ class GuidePermissionView extends StatelessWidget {
   }
 
   String get _getTitle {
-    switch (permission) {
-      case Permission.location:
-        return 'App need position permission always to operate with background cool fine camera notification feature';
-      default:
-        return 'App have no access "$_getText". enable this feature to use $_getText';
+    if (permission == Permission.location) {
+      return 'App need position permission always to operate with background cool fine camera notification feature';
     }
+    return 'App have no access "$_getText". enable this feature to use $_getText';
   }
 
   String get _getTitleEnd {
-    switch (permission) {
-      case Permission.location:
-        return '4. Choose always';
-      default:
-        return '4. Allows the app to use it "$_getText"';
+    if (permission == Permission.location) {
+      return '4. Choose always';
     }
+    return '4. Allows the app to use it "$_getText"';
   }
 
   @override
@@ -121,7 +115,7 @@ class GuidePermissionView extends StatelessWidget {
             child: Column(children: <Widget>[
           Container(
               alignment: Alignment.centerRight,
-              child: FlatButton(
+              child: TextButton(
                   onPressed: () => _closeGuide(context),
                   child: Text('Close',
                       style: TextStyle(
@@ -135,7 +129,7 @@ class GuidePermissionView extends StatelessWidget {
           RowStep(icon: IconIOS.iPrivacy, title: '2. Choose privacy'),
           RowStep(icon: _getIcon, title: '3. Choose "$_getText"'),
           RowStep(icon: IconIOS.iSwitch, title: _getTitleEnd),
-          FlatButton(
+          TextButton(
               onPressed: () => _openSetting(context),
               child: Container(
                 margin: EdgeInsets.only(top: 20),
@@ -143,8 +137,8 @@ class GuidePermissionView extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.blueAccent,
                     borderRadius: BorderRadius.all(Radius.circular(40.0))),
-                child: Text('Allow access',
-                    style: TextStyle(color: Colors.white)),
+                child:
+                    Text('Allow access', style: TextStyle(color: Colors.white)),
               )),
         ])));
   }

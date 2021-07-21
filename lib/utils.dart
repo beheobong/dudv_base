@@ -46,14 +46,15 @@ class Utils {
       });
     } else if (Platform.isIOS) {
       permission.status.then((value) {
-        if (value == PermissionStatus.undetermined) {
-          //first request
-          permission.request().then((value) {
-            if (value == PermissionStatus.granted) {
-              handle();
-            }
-          });
-        } else if (value == PermissionStatus.denied ||
+        // if (value == PermissionStatus.undetermined) {
+        //   //first request
+        //   permission.request().then((value) {
+        //     if (value == PermissionStatus.granted) {
+        //       handle();
+        //     }
+        //   });
+        // } else
+         if (value == PermissionStatus.denied ||
                 value == PermissionStatus.restricted
             // || value == PermissionStatus.disabled
             ) {
