@@ -1,4 +1,8 @@
-## [0.0.5] - 2021-07-21.
+## [0.0.6] - 2021-08-15.
+
+* update Scores
+
+## [0.0.5] - 2021-08-15.
 
 * fix and update loadmodel, submit_presenter
 

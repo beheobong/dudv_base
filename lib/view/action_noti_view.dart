@@ -1,8 +1,6 @@
 import 'package:dudv_base/themes/styles.dart';
 import 'package:flutter/material.dart';
 
-//CM0901
-
 class ActionNotiView extends StatelessWidget {
   const ActionNotiView({
     Key key,

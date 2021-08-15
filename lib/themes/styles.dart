@@ -7,7 +7,7 @@ class Styles {
   static final String sORTASC = "asc";
   static final String sORTDESC = "desc";
   static final Color bg4 = Color(0xff1A1A1A);
-  static final double sizeHorizontal= 20; //CM0704,CM0705,CM0707
+  static final double sizeHorizontal = 20; //CM0704,CM0705,CM0707
 
   static final double borderRadius = 4;
 
@@ -27,21 +27,18 @@ class Styles {
           double height,
           double letterSpacing}) =>
       TextStyle(
-
-        fontSize: fontSize ?? sizeFont,
-        color: color ?? black2,
-        fontWeight: fontWeight,
-        decoration: decoration ?? TextDecoration.none,
-        fontFamily: font,
-        fontStyle: fontStyle,
-        height: height ?? 1,
-        letterSpacing: letterSpacing
-      );
+          fontSize: fontSize ?? sizeFont,
+          color: color ?? black2,
+          fontWeight: fontWeight,
+          decoration: decoration ?? TextDecoration.none,
+          fontFamily: font,
+          fontStyle: fontStyle,
+          height: height ?? 1,
+          letterSpacing: letterSpacing);
 
   static final Color gray3 = Color(0xffc2c2c2);
   static final Color mainRed = Color(0xffed1c24);
   static final Color mainBlue4 = Color(0xffa9ddff);
-
 
   static TextStyle appBar({Color color}) => copyStyle(
       fontSize: 18, color: color ?? black2, fontWeight: FontWeight.bold);
@@ -58,7 +55,7 @@ class Styles {
           color: color ?? Styles.red2,
           letterSpacing: letterSpacing ?? -0.5);
 
-   static final Color colorMain = Color(0xffFC9220);
+  static final Color colorMain = Color(0xffFC9220);
   static final Color colorMain2 = Color(0xffFFEEDC);
   static final Color blue = Color(0xff3D9AE2);
   static final Color blue2 = Color(0xFFBBDEFB);
@@ -86,7 +83,7 @@ class Styles {
 
   static final Color colorbgImg = Color(0xff52B0A5);
 
-  static final Color orange= Color(0xffFD9400);
+  static final Color orange = Color(0xffFD9400);
   static final Color colorStar = Color(0xffF8AD00);
   static final Color orange1 = Color(0xFFFFF9F2);
   static final Color orange2 = Color(0xffFFF7EE);
@@ -153,18 +150,16 @@ class Styles {
   static final Color clTime = Color(0xffB2B2B2);
   static final Color grey49 = Color(0xffC2C2C2);
 
-
   static final Color grey47 = Color(0xffF9F9F9);
 
   static final Color grey48 = Color(0xff8A8A8A);
 
-  static final Color grey50 = Color(0xffA2A3A4); 
-  static final Color grey51 = Color(0xffE7E7E7); 
-  static final Color grey52 = Color(0xff929699); 
-  static final Color grey53 = Color(0xffE8E8E8); 
-  static final Color grey54 = Color(0xffA5A5A5); 
-  static final Color grey55 = Color(0xff595959); 
-  static final Color grey56 = Color(0xffE2E2E2); 
-  static final Color grey57 = Color(0xff9C9C9C); 
-
+  static final Color grey50 = Color(0xffA2A3A4);
+  static final Color grey51 = Color(0xffE7E7E7);
+  static final Color grey52 = Color(0xff929699);
+  static final Color grey53 = Color(0xffE8E8E8);
+  static final Color grey54 = Color(0xffA5A5A5);
+  static final Color grey55 = Color(0xff595959);
+  static final Color grey56 = Color(0xffE2E2E2);
+  static final Color grey57 = Color(0xff9C9C9C);
 }

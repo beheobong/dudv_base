@@ -37,7 +37,6 @@ class FormInputView extends StatefulWidget {
     this.obscureText,
     this.errorStyle,
     this.requireTitle = false,
-
     this.filled = true,
     this.autofocus = false,
     this.leftBorder = false,
@@ -45,7 +44,6 @@ class FormInputView extends StatefulWidget {
     this.fillColor = Colors.white,
     this.type = 1,
   }) : super(key: key);
-
 
   final String hint;
   final String textTitleInput;
@@ -88,7 +86,6 @@ class FormInputView extends StatefulWidget {
   final bool showMaxLength;
 
   final int type;
-
 
   @override
   _FormInputStateView createState() => _FormInputStateView();
@@ -298,7 +295,7 @@ class _FormInputStateView extends State<FormInputView> {
     return _msgError == null;
   }
 
-  void resetValide(){
+  void resetValide() {
     setState(() {
       _msgError = null;
     });
