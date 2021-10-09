@@ -3,23 +3,23 @@ import 'package:flutter/widgets.dart';
 
 class NoDataView extends StatelessWidget {
   const NoDataView({
-    Key key,
+    Key? key,
     this.title,
     this.isListView = false,
     this.size,
     this.style,
   }) : super(key: key);
 
-  final String title;
+  final String? title;
   final bool isListView;
-  final double size;
-  final TextStyle style;
+  final double? size;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
-    String content;
-    if (title != null && title.isNotEmpty) {
-      content = title;
+    String? content;
+    if (title != null && title!.isNotEmpty) {
+      content = title!;
     }
     var tv = Text(
       content ?? 'No data',

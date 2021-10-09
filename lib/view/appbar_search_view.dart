@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 
 class AppBarSearchView extends StatefulWidget implements PreferredSizeWidget {
   const AppBarSearchView({
-    Key key,
+    Key? key,
     this.hintText,
     this.onTap,
     this.enabled = true,
     this.leading,
   }) : super(key: key);
 
-  final String hintText;
-  final Function onTap;
+  final String? hintText;
+  final Function()? onTap;
   final bool enabled;
-  final Widget leading;
+  final Widget? leading;
 
   @override
   _AppBarSearchViewState createState() => _AppBarSearchViewState();
@@ -44,7 +44,7 @@ class _AppBarSearchViewState extends State<AppBarSearchView> {
           bottom: false,
           child: Row(
             children: [
-              if (widget.leading != null) widget.leading,
+              if (widget.leading != null) widget.leading!,
               Expanded(
                 child: TextFormField(
                   enabled: widget.enabled,

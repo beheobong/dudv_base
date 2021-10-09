@@ -8,14 +8,13 @@ import 'view/guide_permission_view.dart';
 
 class Utils {
   static void showToast(String title, {bool isLong: false}) {
-    if (title != null)
-      Fluttertoast.showToast(
-        msg: title,
-        toastLength: isLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.black.withOpacity(0.5),
-        textColor: Colors.white,
-      );
+    Fluttertoast.showToast(
+      msg: title,
+      toastLength: isLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      backgroundColor: Colors.black.withOpacity(0.5),
+      textColor: Colors.white,
+    );
   }
 
   static Future navigatePage(BuildContext context, Widget widget) async {
@@ -24,8 +23,11 @@ class Utils {
     ));
   }
 
-  static void _askPermission(
-      {BuildContext context, Function handle, Permission permission}) {
+  static void _askPermission({
+    required BuildContext context,
+    required Function handle,
+    required Permission permission,
+  }) {
     if (Platform.isAndroid) {
       permission.status.then((value) {
         if (value == PermissionStatus.denied) {
@@ -54,14 +56,14 @@ class Utils {
         //     }
         //   });
         // } else
-         if (value == PermissionStatus.denied ||
+        if (value == PermissionStatus.denied ||
                 value == PermissionStatus.restricted
             // || value == PermissionStatus.disabled
             ) {
           Navigator.of(context, rootNavigator: true).push(PageRouteBuilder(
               opaque: false,
               pageBuilder: (BuildContext context, _, __) =>
-                  GuidePermissionView(permission: permission)));
+                  GuidePermissionView(permission)));
         } else {
           handle();
         }
@@ -94,7 +96,7 @@ class Utils {
         opaque: false, pageBuilder: (BuildContext context, _, __) => widget));
   }
 
-  static bool imageOk(String value) {
+  static bool imageOk(String? value) {
     debugPrint('UtilsImageOk $value');
     if (value == null || value.trim().isEmpty || !value.contains('http')) {
       return false;
@@ -102,7 +104,7 @@ class Utils {
     return true;
   }
 
-  static bool isEmpty(String text) {
+  static bool isEmpty(String? text) {
     return text == null ||
         text.trim().isEmpty ||
         text == 'null' ||
@@ -114,8 +116,8 @@ class Utils {
   }
 
   static Future showModalDialog({
-    @required BuildContext context,
-    @required Widget view,
+    required BuildContext context,
+    required Widget view,
     bool useRootNavigator = false,
   }) {
     return showDialog(

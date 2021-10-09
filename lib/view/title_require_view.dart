@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class TitleRequireView extends StatelessWidget {
   const TitleRequireView({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
     this.require = true,
     this.dot = '※',
   }) : super(key: key);

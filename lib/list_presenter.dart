@@ -32,7 +32,7 @@ mixin ListPresenter {
       }
     } catch (e, stack) {
       debugPrint('$e $stack');
-      Utils.showToast(e.message);
+      Utils.showToast(e.toString());
     }
     isFirst = false;
     view.updateState();
@@ -79,7 +79,7 @@ mixin ListPresenter {
                   )));
   }
 
-  Widget noDataView({bool isListView = false, String title, double size}) {
+  Widget noDataView({bool isListView = false, String? title, double? size}) {
     return NoDataView(
       title: title,
       isListView: isListView,

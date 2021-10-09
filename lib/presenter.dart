@@ -18,7 +18,6 @@ abstract class Presenter {
   final BuildContext context;
   List list = [];
   bool isFirst = true;
-  String sort;
   final LoadingHandle loading = LoadingHandle();
 
   Future onRefresh() {
@@ -55,7 +54,7 @@ abstract class Presenter {
     return loading.hideLoading(context);
   }
 
-  Widget loadingView2({Brightness brightness}) {
+  Widget loadingView2({Brightness? brightness}) {
     final iosWidget = Theme(
       data: ThemeData(
         cupertinoOverrideTheme:

@@ -18,14 +18,15 @@ class Styles {
     borderRadius: BorderRadius.circular(4),
   );
 
-  static TextStyle copyStyle(
-          {Color color,
-          FontWeight fontWeight = FontWeight.normal,
-          double fontSize,
-          TextDecoration decoration,
-          FontStyle fontStyle,
-          double height,
-          double letterSpacing}) =>
+  static TextStyle copyStyle({
+    Color? color,
+    FontWeight fontWeight = FontWeight.normal,
+    double? fontSize,
+    TextDecoration? decoration,
+    FontStyle? fontStyle,
+    double? height,
+    double? letterSpacing,
+  }) =>
       TextStyle(
           fontSize: fontSize ?? sizeFont,
           color: color ?? black2,
@@ -40,16 +41,19 @@ class Styles {
   static final Color mainRed = Color(0xffed1c24);
   static final Color mainBlue4 = Color(0xffa9ddff);
 
-  static TextStyle appBar({Color color}) => copyStyle(
+  static TextStyle appBar({Color? color}) => copyStyle(
       fontSize: 18, color: color ?? black2, fontWeight: FontWeight.bold);
 
-  static TextStyle cusText({Color color, double size}) => copyStyle(
+  static TextStyle cusText({Color? color, double? size}) => copyStyle(
         fontSize: size ?? 14,
         color: color ?? Colors.white,
         fontWeight: FontWeight.w600,
       );
-  static TextStyle errorStyle(
-          {Color color, double fontSize, double letterSpacing}) =>
+  static TextStyle errorStyle({
+    Color? color,
+    double? fontSize,
+    double? letterSpacing,
+  }) =>
       copyStyle(
           fontSize: fontSize ?? 11,
           color: color ?? Styles.red2,

@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 
 class LineOrLineView extends StatelessWidget {
   const LineOrLineView({
-    Key key,
+    Key? key,
     this.textOr,
     this.styleOr,
     this.lineColor,
     this.lineHeight,
   }) : super(key: key);
 
-  final String textOr;
-  final TextStyle styleOr;
-  final Color lineColor;
-  final double lineHeight;
+  final String? textOr;
+  final TextStyle? styleOr;
+  final Color? lineColor;
+  final double? lineHeight;
 
   @override
   Widget build(BuildContext context) {

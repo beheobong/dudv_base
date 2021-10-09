@@ -14,8 +14,8 @@ class IconIOS {
 }
 
 class RowStep extends StatelessWidget {
-  final String icon;
-  final String title;
+  final String? icon;
+  final String? title;
 
   RowStep({this.icon, this.title});
 
@@ -32,13 +32,13 @@ class RowStep extends StatelessWidget {
                 height: 35,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(icon),
+                    image: AssetImage(icon!),
                     fit: BoxFit.contain,
                   ),
                 ),
               )),
           Flexible(
-              child: Text(title,
+              child: Text(title!,
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.w700)))
         ],
@@ -50,7 +50,7 @@ class RowStep extends StatelessWidget {
 class GuidePermissionView extends StatelessWidget {
   final Permission permission;
 
-  GuidePermissionView({this.permission});
+  GuidePermissionView(this.permission);
 
   _closeGuide(context) {
     Navigator.pop(context);

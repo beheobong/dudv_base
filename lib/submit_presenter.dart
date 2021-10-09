@@ -13,7 +13,7 @@ mixin SubmitPresenter {
   Future hideLoading();
   Logger get logger;
 
-  Future onSubmit({String messageSuccess, int index = 0}) async {
+  Future onSubmit({String? messageSuccess, int index = 0}) async {
     showLoading();
     try {
       final result = await apiSubmits[index]();
@@ -25,7 +25,7 @@ mixin SubmitPresenter {
     } catch (e, stack) {
       logger.e('$e $stack');
       await hideLoading();
-      Utils.showToast(e.message);
+      Utils.showToast(e.toString());
       return null;
     }
   }

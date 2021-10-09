@@ -6,7 +6,7 @@ import 'contract.dart';
 mixin LoadModelPresenter {
   BuildContext get context;
   Contract get view;
-  List<Function> apiGets;
+  late List<Function> apiGets;
   Future showMessage({String content});
 
   Future onGet({int index = 0}) async {
@@ -15,7 +15,7 @@ mixin LoadModelPresenter {
       return result;
     } catch (e, stack) {
       debugPrint('$e $stack');
-      showMessage(content: e.message);
+      showMessage(content: e.toString());
       return null;
     }
   }

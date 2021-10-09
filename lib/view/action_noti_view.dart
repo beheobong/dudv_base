@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class ActionNotiView extends StatelessWidget {
   const ActionNotiView({
-    Key key,
-    @required this.icon,
-    @required this.onTap,
+    Key? key,
+    required this.icon,
+    required this.onTap,
   }) : super(key: key);
   final String icon;
-  final Function onTap;
+  final Function() onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

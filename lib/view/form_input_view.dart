@@ -6,7 +6,7 @@ import 'title_require_view.dart';
 
 class FormInputView extends StatefulWidget {
   const FormInputView({
-    Key key,
+    Key? key,
     this.hint,
     this.controller,
     this.margin,
@@ -45,54 +45,54 @@ class FormInputView extends StatefulWidget {
     this.type = 1,
   }) : super(key: key);
 
-  final String hint;
-  final String textTitleInput;
-  final String textSuggestion;
-  final FormFieldValidator<String> validator;
-  final TextStyle textStyle;
-  final TextStyle hintStyle;
-  final TextStyle errorStyle;
-  final TextStyle sugesStyle;
-  final Function onTap;
-  final Function onEditingComplete;
-  final TextInputAction textInputAction;
-  final TextEditingController controller;
-  final ValueChanged<String> onChanged;
-  final EdgeInsets margin;
-  final Widget prefixIcon;
-  final Widget suffixIcon;
-  final Widget prefix;
+  final String? hint;
+  final String? textTitleInput;
+  final String? textSuggestion;
+  final FormFieldValidator<String>? validator;
+  final TextStyle? textStyle;
+  final TextStyle? hintStyle;
+  final TextStyle? errorStyle;
+  final TextStyle? sugesStyle;
+  final Function? onTap;
+  final Function()? onEditingComplete;
+  final TextInputAction? textInputAction;
+  final TextEditingController? controller;
+  final ValueChanged<String>? onChanged;
+  final EdgeInsets? margin;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final Widget? prefix;
   final bool isPw;
-  final int maxLength;
+  final int? maxLength;
   final bool enable;
-  final int maxLines;
-  final String counterText;
+  final int? maxLines;
+  final String? counterText;
   final bool autofocus;
   final bool leftBorder;
 
-  final List<TextInputFormatter> inputFormatter;
-  final TextInputType keyboardType;
-  final InputBorder focusBorder;
-  final InputBorder enabledBorder;
-  final InputBorder disabledBorder;
-  final EdgeInsets contentPadding;
+  final List<TextInputFormatter>? inputFormatter;
+  final TextInputType? keyboardType;
+  final InputBorder? focusBorder;
+  final InputBorder? enabledBorder;
+  final InputBorder? disabledBorder;
+  final EdgeInsets? contentPadding;
 
   final bool filled;
-  final Color fillColor;
+  final Color? fillColor;
 
-  final bool obscureText;
+  final bool? obscureText;
   final bool requireTitle;
 
   final bool showMaxLength;
 
-  final int type;
+  final int? type;
 
   @override
   _FormInputStateView createState() => _FormInputStateView();
 }
 
 class _FormInputStateView extends State<FormInputView> {
-  String _msgError;
+  String? _msgError;
   bool _obscureText = false;
   final _controller = TextEditingController();
 
@@ -152,7 +152,7 @@ class _FormInputStateView extends State<FormInputView> {
                     left: widget.type == 2 ? 10 : 0,
                   ),
                   child: TitleRequireView(
-                    title: widget.textTitleInput,
+                    title: widget.textTitleInput!,
                     require: widget.requireTitle,
                   ),
                 ),
@@ -189,7 +189,7 @@ class _FormInputStateView extends State<FormInputView> {
               padding: EdgeInsets.only(
                   top: 10, left: widget.type == 2 ? 10 : 0, right: 10),
               child: Text(
-                _msgError,
+                _msgError!,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: widget.errorStyle ?? Styles.errorStyle(),
@@ -199,7 +199,7 @@ class _FormInputStateView extends State<FormInputView> {
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Text(
-                widget.textSuggestion,
+                widget.textSuggestion!,
                 style: widget.sugesStyle ??
                     Styles.copyStyle(
                       color: Styles.grey31,
@@ -289,7 +289,7 @@ class _FormInputStateView extends State<FormInputView> {
   bool checkValidate() {
     if (widget.validator != null) {
       setState(() {
-        _msgError = widget.validator(_editingController.text);
+        _msgError = widget.validator!(_editingController.text);
       });
     }
     return _msgError == null;

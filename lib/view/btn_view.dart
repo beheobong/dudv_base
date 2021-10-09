@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 
 class BtnView extends StatelessWidget {
   const BtnView(
-      {Key key,
-      @required this.onPress,
-      @required this.title,
+      {Key? key,
+      required this.onPress,
+      required this.title,
       this.margin,
       this.decoration,
       this.textStyle,
       this.padding})
       : super(key: key);
 
-  final Function onPress;
-  final String title;
-  final EdgeInsets margin;
-  final EdgeInsets padding;
-  final BoxDecoration decoration;
-  final TextStyle textStyle;
+  final Function()? onPress;
+  final String? title;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
+  final BoxDecoration? decoration;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class BtnView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(color: Colors.transparent, width: 1)),
         child: Text(
-          title,
+          title!,
           style: textStyle ?? Styles.copyStyle(color: Colors.white),
         ),
       ),

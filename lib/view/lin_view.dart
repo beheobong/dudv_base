@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 
 class LineView extends StatelessWidget {
   const LineView({
-    Key key,
+    Key? key,
     this.margin,
     this.lineColor,
     this.lineHeight,
   }) : super(key: key);
 
-  final EdgeInsets margin;
-  final Color lineColor;
-  final double lineHeight;
+  final EdgeInsets? margin;
+  final Color? lineColor;
+  final double? lineHeight;
 
   @override
   Widget build(BuildContext context) {
