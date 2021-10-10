@@ -10,7 +10,7 @@ mixin ApiLoadMore {
   List modelHanlde(data);
   Future apiCall(query);
 
-  Future apiGet(isFirst, Map<String, dynamic> queries) async {
+  Future apiGet(isFirst, [Map<String, dynamic>? queries]) async {
     if (isFirst) {
       page = 0;
       hashNextPage = true;

@@ -1,40 +1,17 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:dudv_base/loading_handle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'contract.dart';
-
-abstract class Presenter {
-  Presenter(
-    this.context,
-    this.view,
-  ) {
-    init();
-  }
-
-  final Contract view;
-  final BuildContext context;
-  List list = [];
-  bool isFirst = true;
-  final LoadingHandle loading = LoadingHandle();
+mixin Presenter  {
+  BuildContext get context;
 
   Future onRefresh() {
     loadData();
     return Future.value(true);
   }
 
-  void handleError(e, stack) {}
-
-  void init() {}
-
   Future loadData() {
-    isFirst = false;
-    return Future.value(true);
-  }
-
-  Future dispose() async {
     return Future.value(true);
   }
 
@@ -46,13 +23,6 @@ abstract class Presenter {
     Navigator.of(context).pop(value);
   }
 
-  void showLoading() {
-    return loading.showLoading(context);
-  }
-
-  Future hideLoading() {
-    return loading.hideLoading(context);
-  }
 
   Widget loadingView2({Brightness? brightness}) {
     final iosWidget = Theme(

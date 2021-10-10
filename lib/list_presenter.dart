@@ -4,19 +4,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'contract.dart';
 import 'utils.dart';
 import 'view/no_data_view.dart';
 
 mixin ListPresenter {
-  List get list;
-  set list(List values);
-  Contract get view;
-  bool get isFirst;
-  set isFirst(bool value);
+  List list = [];
+  bool isFirst = true;
+  // List get list;
+  // set list(List values);
+  // bool get isFirst;
+  // set isFirst(bool value);
+  
   final ScrollController controller = ScrollController();
   Future apiLoadData({bool isFirst});
-   void showAppBar() {}
+  void showAppBar() {}
 
   void hideAppBar() {}
 
@@ -35,7 +36,6 @@ mixin ListPresenter {
       Utils.showToast(e.toString());
     }
     isFirst = false;
-    view.updateState();
   }
 
   void loadMore() async {
@@ -43,14 +43,13 @@ mixin ListPresenter {
       final _list = await apiLoadData(isFirst: false);
       if (_list.isNotEmpty) {
         list.addAll(_list);
-        view.updateState();
       }
     } catch (e, stack) {
       debugPrint('$e $stack');
     }
   }
 
- void _listenter() {
+  void _listenter() {
     final maxScroll = controller.position.maxScrollExtent;
     if (controller.offset >= maxScroll && !controller.position.outOfRange) {
       loadMore();
@@ -62,8 +61,8 @@ mixin ListPresenter {
     if (position.userScrollDirection == ScrollDirection.forward) {
       showAppBar();
     }
-    if(position.pixels == 0){
-       hideAppBar();
+    if (position.pixels == 0) {
+      hideAppBar();
     }
   }
 
@@ -108,14 +107,13 @@ mixin ListPresenter {
   }
 
   void scrollToTop() {
-    // if (controller.offset == 0.0) {
-    //   double heigh = MediaQuery.of(context).size.height;
-    //   controller.jumpTo(-heigh);
-    // } else {
-    //   print('Scrool to top');
-    //   controller.animateTo(0.0,
-    //       curve: Curves.easeOut, duration: const Duration(milliseconds: 300));
-    // }
+    if (controller.offset == 0.0) {
+      controller.jumpTo(-200);
+    } else {
+      print('Scrool to top');
+      controller.animateTo(0.0,
+          curve: Curves.easeOut, duration: const Duration(milliseconds: 300));
+    }
   }
 
   Future dispose() {

@@ -4,10 +4,12 @@ import 'package:dudv_base/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoadingHandle {
+mixin LoadingPresenter {
   bool _isShowDialog = false;
 
-  void showLoading(BuildContext context, {bool useRootNavigator = false}) {
+  BuildContext get context;
+
+  void showLoading({bool useRootNavigator = false}) {
     _isShowDialog = true;
     Utils.showModalDialog(
       context: context,
@@ -24,7 +26,7 @@ class LoadingHandle {
     );
   }
 
-  Future hideLoading(BuildContext context) async {
+  Future hideLoading() async {
     if (!_isShowDialog) return;
     if (Navigator.of(context).canPop()) {
       return Future.delayed(const Duration(milliseconds: 300), () {
@@ -33,4 +35,6 @@ class LoadingHandle {
       });
     }
   }
+
+ 
 }

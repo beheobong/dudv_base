@@ -1,59 +1,57 @@
-import 'package:dudv_base/contract.dart';
-import 'package:dudv_base/presenter.dart';
+import 'package:dudv_base/dudv_base.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:provider/provider.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Application());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> implements Contract {
-  MyAppPresenter _presenter;
-  @override
-  void initState() {
-    super.initState();
-    _presenter = MyAppPresenter(context, this);
-  }
-
+class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: ${_presenter.platformVersion}\n'),
-        ),
-      ),
+      theme: ThemeData.dark(),
+      home: StateNotifierProvider<MyAppPresenter, Count>(
+          create: (context) => MyAppPresenter(context), child: MyApp()),
     );
-  }
-
-  @override
-  void updateState() {
-    setState(() {});
   }
 }
 
-class MyAppPresenter extends Presenter {
-  MyAppPresenter(BuildContext context, Contract view) : super(context, view);
-
-  String platformVersion = 'Unknown';
-
+class MyApp extends StatelessWidget {
   @override
-  void init() {
-    super.init();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      initPlatformState();
-    });
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: Center(
+        child: Text('Running on: ${context.watch<Count>().value}\n'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.read<MyAppPresenter>().increment(),
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class MyAppPresenter extends StateNotifier<Count> with LocatorMixin, LoadingPresenter {
+  MyAppPresenter(this.context) : super(Count(0));
+  final BuildContext context;
+
+  void increment() {
+    state = Count(state.value + 1);
   }
 
-  void initPlatformState() {
-    platformVersion = '0.0.1';
-    view.updateState();
+  void decrement() {
+    state = Count(state.value - 1);
   }
+}
+
+class Count {
+  int value;
+
+  Count(this.value);
 }

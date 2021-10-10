@@ -11,11 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-  permission_handler: ^8.1.4+2
+  permission_handler: ^8.2.2
   fluttertoast: ^8.0.8
   dio: ^4.0.0
-  logger: ^1.0.0
-
+  logger: ^1.1.0
+  flutter_state_notifier: ^0.7.1
+  state_notifier: ^0.7.1
+  provider: ^6.0.1
+  freezed: ^0.15.0+1
+  freezed_annotation: ^0.15.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
