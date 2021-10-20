@@ -7,7 +7,7 @@ class Styles {
   static final String sORTASC = "asc";
   static final String sORTDESC = "desc";
   static final Color bg4 = Color(0xff1A1A1A);
-  static final double sizeHorizontal = 20; //CM0704,CM0705,CM0707
+  static final double sizeHorizontal = 20; 
 
   static final double borderRadius = 4;
 

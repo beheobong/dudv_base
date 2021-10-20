@@ -10,10 +10,6 @@ import 'view/no_data_view.dart';
 mixin ListPresenter {
   List list = [];
   bool isFirst = true;
-  // List get list;
-  // set list(List values);
-  // bool get isFirst;
-  // set isFirst(bool value);
   
   final ScrollController controller = ScrollController();
   Future apiLoadData({bool isFirst});

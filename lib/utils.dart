@@ -30,42 +30,33 @@ class Utils {
   }) {
     if (Platform.isAndroid) {
       permission.status.then((value) {
-        if (value == PermissionStatus.denied) {
+        if (value != PermissionStatus.granted) {
           permission.request().then((value2) {
             if (value == PermissionStatus.granted) {
+              handle();
+            }
+          });
+        } else {
+          handle();
+        }
+      });
+    } else if (Platform.isIOS) {
+      permission.status.then((value) {
+        debugPrint('Utils._askPermission $value');
+        if (value != PermissionStatus.granted) {
+          permission.request().then((value2) {
+            debugPrint('Utils.request $value2');
+            if (value2 != PermissionStatus.denied) {
               handle();
             }
           });
         } else if (value == PermissionStatus.granted) {
           handle();
         } else {
-          permission.request().then((value3) {
-            if (value3 == PermissionStatus.granted) {
-              handle();
-            }
-          });
-        }
-      });
-    } else if (Platform.isIOS) {
-      permission.status.then((value) {
-        // if (value == PermissionStatus.undetermined) {
-        //   //first request
-        //   permission.request().then((value) {
-        //     if (value == PermissionStatus.granted) {
-        //       handle();
-        //     }
-        //   });
-        // } else
-        if (value == PermissionStatus.denied ||
-                value == PermissionStatus.restricted
-            // || value == PermissionStatus.disabled
-            ) {
           Navigator.of(context, rootNavigator: true).push(PageRouteBuilder(
               opaque: false,
               pageBuilder: (BuildContext context, _, __) =>
                   GuidePermissionView(permission)));
-        } else {
-          handle();
         }
       });
     }
@@ -97,7 +88,6 @@ class Utils {
   }
 
   static bool imageOk(String? value) {
-    debugPrint('UtilsImageOk $value');
     if (value == null || value.trim().isEmpty || !value.contains('http')) {
       return false;
     }
@@ -118,6 +108,7 @@ class Utils {
   static Future showModalDialog({
     required BuildContext context,
     required Widget view,
+    double radius = 10,
     bool useRootNavigator = false,
   }) {
     return showDialog(
@@ -129,8 +120,8 @@ class Utils {
             onWillPop: () async => false,
             child: Dialog(
               elevation: 10,
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(radius))),
               child: view,
             ),
           );

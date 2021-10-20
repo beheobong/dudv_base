@@ -19,7 +19,7 @@ class Application extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +27,13 @@ class MyApp extends StatelessWidget {
         title: const Text('Plugin example app'),
       ),
       body: Center(
-        child: Text('Running on: ${context.watch<Count>().value}\n'),
+        child: Column(
+          children: [
+            Text('Running on: ${context.watch<Count>().value}\n'),
+            BtnView(
+                onPress: context.read<MyAppPresenter>().onLogin, title: 'Login')
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.read<MyAppPresenter>().increment(),
@@ -35,11 +41,15 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
+
 }
 
-class MyAppPresenter extends StateNotifier<Count> with LocatorMixin, LoadingPresenter {
+class MyAppPresenter extends StateNotifier<Count>
+    with LocatorMixin, ApiPresenter, LoadingPresenter {
   MyAppPresenter(this.context) : super(Count(0));
   final BuildContext context;
+  final String _loginFuncKey = 'login_func_key';
 
   void increment() {
     state = Count(state.value + 1);
@@ -48,6 +58,16 @@ class MyAppPresenter extends StateNotifier<Count> with LocatorMixin, LoadingPres
   void decrement() {
     state = Count(state.value - 1);
   }
+
+  void onLogin() async {
+    final res = await onSubmit(_loginFuncKey);
+    print(res);
+  }
+
+  Future _login() => Future.value(true);
+
+  @override
+  Map<String, Function> get apiSubmits => {_loginFuncKey: _login};
 }
 
 class Count {

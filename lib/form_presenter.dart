@@ -16,9 +16,9 @@ mixin FormPresenter {
     return _valid;
   }
 
-  void resetValid(){
+  void resetValid() {
     keys.forEach((element) {
-      if (element.currentState != null ) {
+      if (element.currentState != null) {
         element.currentState.resetValide();
       }
     });
