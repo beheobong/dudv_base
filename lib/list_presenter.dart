@@ -10,14 +10,17 @@ import 'view/no_data_view.dart';
 mixin ListPresenter {
   List list = [];
   bool isFirst = true;
-  
+
   final ScrollController controller = ScrollController();
-  Future apiLoadData({bool isFirst});
+  Future apiLoadData({required bool isFirst}) async {}
   void showAppBar() {}
 
   void hideAppBar() {}
 
-  init() {
+  void updateState(bool isFirst) {}
+  // vì trùng với 1 vài presenter đã có hàm init rồi 
+  //=> supper các hàm sẽ không đc gọi => đổi init => initList
+  initList() {
     controller.addListener(_listenter);
   }
 
@@ -32,6 +35,7 @@ mixin ListPresenter {
       Utils.showToast(e.toString());
     }
     isFirst = false;
+    updateState(isFirst);
   }
 
   void loadMore() async {
@@ -43,6 +47,7 @@ mixin ListPresenter {
     } catch (e, stack) {
       debugPrint('$e $stack');
     }
+    updateState(false);
   }
 
   void _listenter() {
