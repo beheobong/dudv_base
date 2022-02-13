@@ -17,7 +17,7 @@ mixin ListPresenter {
 
   void hideAppBar() {}
 
-  void updateState(bool isFirst) {}
+  void updateState(List datas) {}
   // vì trùng với 1 vài presenter đã có hàm init rồi 
   //=> supper các hàm sẽ không đc gọi => đổi init => initList
   initList() {
@@ -35,7 +35,7 @@ mixin ListPresenter {
       Utils.showToast(e.toString());
     }
     isFirst = false;
-    updateState(isFirst);
+    updateState(list);
   }
 
   void loadMore() async {
@@ -47,7 +47,7 @@ mixin ListPresenter {
     } catch (e, stack) {
       debugPrint('$e $stack');
     }
-    updateState(false);
+    updateState(list);
   }
 
   void _listenter() {
