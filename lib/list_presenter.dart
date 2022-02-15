@@ -117,7 +117,7 @@ mixin ListPresenter {
     }
   }
 
-  Future dispose() {
+  Future onDestroy() {
     controller.removeListener(_listenter);
     controller.dispose();
     return Future.value(true);
