@@ -1,3 +1,8 @@
+## [1.0.6] - 2022-07-03.
+
+* update flutter 2.10.2
+* add option api_presenter
+
 ## [1.0.5] - 2021-20-10.
 
 * update list_presenter

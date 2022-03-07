@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget  {
       body: Center(
         child: Column(
           children: [
-            Text('Running on: ${context.watch<Count>().value}\n'),
+            Text('Running on: ${context.watch<Count>().value}\n', style: Styles.copyStyle(),),
             BtnView(
                 onPress: context.read<MyAppPresenter>().onLogin, title: 'Login')
           ],

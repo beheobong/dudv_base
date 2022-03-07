@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Styles {
+mixin Styles {
   static final double spacingGrid = 15;
   static final String font = 'Roboto';
   static final double sizeFont = 14;
-  static final String sORTASC = "asc";
-  static final String sORTDESC = "desc";
   static final Color bg4 = Color(0xff1A1A1A);
   static final double sizeHorizontal = 20; 
 
