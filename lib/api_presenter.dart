@@ -11,14 +11,14 @@ mixin ApiPresenter {
       bool loading = true,
       bool showError = true,
       bool logError = true,
-      AsyncCallback? handle}) async {
+      AsyncValueSetter? handle}) async {
     if (loading) {
       showLoading();
     }
     try {
       final result = await apiSubmits[func]!();
       if (handle != null) {
-        await handle();
+        await handle(result);
       }
       if (loading) {
         await hideLoading();
