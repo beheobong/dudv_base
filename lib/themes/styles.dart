@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 mixin Styles {
   static final double spacingGrid = 15;
-  static final String font = 'Roboto';
+  static String font = 'Roboto';
   static final double sizeFont = 14;
   static final Color bg4 = Color(0xff1A1A1A);
-  static final double sizeHorizontal = 20; 
+  static final double sizeHorizontal = 20;
 
   static final double borderRadius = 4;
 
@@ -27,7 +27,7 @@ mixin Styles {
   }) =>
       TextStyle(
           fontSize: fontSize ?? sizeFont,
-          color: color ?? black2,
+          color: color ?? colorDefault,
           fontWeight: fontWeight,
           decoration: decoration ?? TextDecoration.none,
           fontFamily: font,
@@ -40,7 +40,9 @@ mixin Styles {
   static final Color mainBlue4 = Color(0xffa9ddff);
 
   static TextStyle appBar({Color? color}) => copyStyle(
-      fontSize: 18, color: color ?? black2, fontWeight: FontWeight.bold);
+      fontSize: fontSizeAppBar,
+      color: color ?? colorDefault,
+      fontWeight: FontWeight.bold);
 
   static TextStyle cusText({Color? color, double? size}) => copyStyle(
         fontSize: size ?? 14,
@@ -56,6 +58,15 @@ mixin Styles {
           fontSize: fontSize ?? 11,
           color: color ?? Styles.red2,
           letterSpacing: letterSpacing ?? -0.5);
+
+  static double fontSizeAppBar = 18;
+  static Color colorDefault = black2;
+
+  static void config(Color color, double sizeAppBar, String fontFamily) {
+    colorDefault = color;
+    fontSizeAppBar = sizeAppBar;
+    font = fontFamily;
+  }
 
   static final Color colorMain = Color(0xffFC9220);
   static final Color colorMain2 = Color(0xffFFEEDC);
