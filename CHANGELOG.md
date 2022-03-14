@@ -1,6 +1,7 @@
 ## [1.0.6+1] - 2022-14-03.
 
 * add config styles
+* add handle callback in ApiPresenter
 
 ## [1.0.6] - 2022-07-03.
 

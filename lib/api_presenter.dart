@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'utils.dart';
 
 mixin ApiPresenter {
@@ -6,18 +6,20 @@ mixin ApiPresenter {
   void showLoading();
   Future hideLoading();
 
-  Future onSubmit(
-    String func, {
-    String? msgSuc,
-    bool loading = true,
-    bool showError = true,
-    bool logError = true,
-  }) async {
+  Future onSubmit(String func,
+      {String? msgSuc,
+      bool loading = true,
+      bool showError = true,
+      bool logError = true,
+      AsyncCallback? handle}) async {
     if (loading) {
       showLoading();
     }
     try {
       final result = await apiSubmits[func]!();
+      if (handle != null) {
+        await handle();
+      }
       if (loading) {
         await hideLoading();
       }
