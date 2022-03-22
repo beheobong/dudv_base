@@ -5,6 +5,10 @@ mixin ApiPresenter {
   Map<String, Function> get apiSubmits;
   void showLoading();
   Future hideLoading();
+  static ValueChanged<String>? _showError;
+  static void setShowError(ValueChanged<String> value) {
+    _showError = value;
+  }
 
   Future onSubmit(String func,
       {String? msgSuc,
@@ -35,7 +39,11 @@ mixin ApiPresenter {
         await hideLoading();
       }
       if (showError) {
-        Utils.showToast(e.toString());
+        if (_showError != null) {
+          _showError!(e.toString());
+        } else {
+          Utils.showToast(e.toString());
+        }
       }
       return null;
     }

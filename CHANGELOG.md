@@ -1,3 +1,7 @@
+## [1.0.6+4] - 2022-14-03.
+
+* config showError ApiPresenter
+
 ## [1.0.6+1] - 2022-14-03.
 
 * add config styles
