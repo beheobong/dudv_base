@@ -22,6 +22,7 @@ mixin LoadingPresenter {
     Utils.showModalDialog(
       context: context,
       useRootNavigator: useRootNavigator,
+      bg: bg,
       view: SizedBox(
           width: 100,
           height: 100,
