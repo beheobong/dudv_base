@@ -116,6 +116,7 @@ class Utils {
     required Widget view,
     double radius = 10,
     bool useRootNavigator = false,
+    Color? bg
   }) {
     return showDialog(
         context: context,
@@ -126,6 +127,7 @@ class Utils {
             onWillPop: () async => false,
             child: Dialog(
               elevation: 10,
+              backgroundColor: bg,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(radius))),
               child: view,

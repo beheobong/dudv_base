@@ -10,9 +10,12 @@ mixin LoadingPresenter {
   BuildContext get context;
 
   static Widget? view;
-  static void setLoadingView(Widget value) {
+  static void setLoadingView(Widget value, Color bgValue) {
     view = value;
+    bg = bgValue;
   }
+
+  static Color? bg;
 
   void showLoading({bool useRootNavigator = false}) {
     _isShowDialog = true;
