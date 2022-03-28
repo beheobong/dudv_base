@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -87,8 +86,15 @@ class Utils {
         opaque: false, pageBuilder: (BuildContext context, _, __) => widget));
   }
 
+  static void navigateToRoot(BuildContext context,){
+    return Navigator.of(context).popUntil((route) => route.isFirst);
+  }
+
   static bool imageOk(String? value) {
-    if (value == null || value.trim().isEmpty || !value.contains('http')) {
+    if (value == null ||
+        value.trim().isEmpty ||
+        !value.contains('http') ||
+        value.contains('null')) {
       return false;
     }
     return true;

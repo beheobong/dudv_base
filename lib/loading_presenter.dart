@@ -9,6 +9,11 @@ mixin LoadingPresenter {
 
   BuildContext get context;
 
+  static Widget? view;
+  static void setLoadingView(Widget value) {
+    view = value;
+  }
+
   void showLoading({bool useRootNavigator = false}) {
     _isShowDialog = true;
     Utils.showModalDialog(
@@ -18,23 +23,20 @@ mixin LoadingPresenter {
           width: 100,
           height: 100,
           child: Center(
-              child: Platform.isAndroid
-                  ? const CircularProgressIndicator()
-                  : const CupertinoActivityIndicator(
-                      radius: 15,
-                    ))),
+              child: view ??
+                  (Platform.isAndroid
+                      ? const CircularProgressIndicator()
+                      : const CupertinoActivityIndicator(
+                          radius: 15,
+                        )))),
     );
   }
 
   Future hideLoading() async {
     if (!_isShowDialog) return;
-    if (Navigator.of(context).canPop()) {
-      return Future.delayed(const Duration(milliseconds: 300), () {
-        Navigator.of(context).pop();
-        _isShowDialog = false;
-      });
-    }
+    return Future.delayed(const Duration(milliseconds: 300), () {
+      Navigator.of(context).pop();
+      _isShowDialog = false;
+    });
   }
-
- 
 }
