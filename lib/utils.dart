@@ -122,12 +122,12 @@ class Utils {
         context: context,
         useRootNavigator: useRootNavigator,
         barrierDismissible: false,
-        barrierColor: null,
+        barrierColor: Colors.transparent,
         builder: (BuildContext context) {
           return WillPopScope(
             onWillPop: () async => false,
             child: Dialog(
-              elevation: 10,
+              elevation: 0,
               backgroundColor: bg,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(radius))),
