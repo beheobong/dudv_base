@@ -122,7 +122,6 @@ class Utils {
         context: context,
         useRootNavigator: useRootNavigator,
         barrierDismissible: false,
-        barrierColor: Colors.transparent,
         builder: (BuildContext context) {
           return WillPopScope(
             onWillPop: () async => false,

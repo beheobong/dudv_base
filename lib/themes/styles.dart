@@ -32,7 +32,7 @@ mixin Styles {
           decoration: decoration ?? TextDecoration.none,
           fontFamily: font,
           fontStyle: fontStyle,
-          height: height ?? 1,
+          height: height ?? txHeight,
           letterSpacing: letterSpacing);
 
   static final Color gray3 = Color(0xffc2c2c2);
@@ -61,11 +61,26 @@ mixin Styles {
 
   static double fontSizeAppBar = 18;
   static Color colorDefault = black2;
+  static double txHeight = 1;
 
-  static void config(Color color, double sizeAppBar, String fontFamily) {
-    colorDefault = color;
-    fontSizeAppBar = sizeAppBar;
-    font = fontFamily;
+  static void config({
+    Color? color,
+    double? sizeAppBar,
+    String? fontFamily,
+    double? height,
+  }) {
+    if (color != null) {
+      colorDefault = color;
+    }
+    if (sizeAppBar != null) {
+      fontSizeAppBar = sizeAppBar;
+    }
+    if (fontFamily != null) {
+      font = fontFamily;
+    }
+    if (height != null) {
+      txHeight = height;
+    }
   }
 
   static final Color colorMain = Color(0xffFC9220);

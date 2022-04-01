@@ -14,16 +14,12 @@ mixin ApiPresenter {
       {String? msgSuc,
       bool loading = true,
       bool showError = true,
-      bool logError = true,
-      AsyncValueSetter? handle}) async {
+      bool logError = true}) async {
     if (loading) {
       showLoading();
     }
     try {
       final result = await apiSubmits[func]!();
-      if (handle != null) {
-        await handle(result);
-      }
       if (loading) {
         await hideLoading();
       }
