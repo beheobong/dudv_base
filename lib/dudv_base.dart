@@ -17,3 +17,4 @@ export 'view/loading_view.dart';
 export 'view/btn_view.dart';
 export 'view/action_noti_view.dart';
 export 'themes/styles.dart';
+export 'config.dart';

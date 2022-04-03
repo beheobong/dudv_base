@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class IconIOS {
@@ -109,7 +110,7 @@ class GuidePermissionView extends StatelessWidget {
             child: AppBar(
                 centerTitle: true,
                 backgroundColor: Colors.black.withOpacity(0.85),
-                brightness: Brightness.dark)),
+                systemOverlayStyle: SystemUiOverlayStyle.dark)),
         backgroundColor: Colors.black.withOpacity(0.85),
         body: Container(
             child: Column(children: <Widget>[

@@ -81,10 +81,6 @@ class _AppBarSearchViewState extends State<AppBarSearchView> {
     );
   }
 
-  void _onBack() {
-    Navigator.of(context).pop();
-  }
-
   void _onClearText() {
     _edController.clear();
     _showClear = false;

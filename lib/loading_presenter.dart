@@ -4,30 +4,24 @@ import 'package:dudv_base/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'config.dart';
+
 mixin LoadingPresenter {
   bool _isShowDialog = false;
 
   BuildContext get context;
-
-  static Widget? view;
-  static void setLoadingView(Widget value, Color bgValue) {
-    view = value;
-    bg = bgValue;
-  }
-
-  static Color? bg;
 
   void showLoading({bool useRootNavigator = false}) {
     _isShowDialog = true;
     Utils.showModalDialog(
       context: context,
       useRootNavigator: useRootNavigator,
-      bg: bg,
+      bg: DudvConfig.bgLoadingValue,
       view: SizedBox(
           width: 100,
           height: 100,
           child: Center(
-              child: view ??
+              child: DudvConfig.loadingView ??
                   (Platform.isAndroid
                       ? const CircularProgressIndicator()
                       : const CupertinoActivityIndicator(

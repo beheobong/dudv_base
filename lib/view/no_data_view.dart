@@ -1,5 +1,5 @@
+import 'package:dudv_base/config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NoDataView extends StatelessWidget {
   const NoDataView({
@@ -22,7 +22,7 @@ class NoDataView extends StatelessWidget {
       content = title!;
     }
     var tv = Text(
-      content ?? 'No data',
+      content ?? DudvConfig.noDataValue,
       style: style ?? TextStyle(color: Colors.black),
     );
 
