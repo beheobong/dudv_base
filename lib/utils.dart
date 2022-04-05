@@ -107,7 +107,7 @@ class Utils {
         text.isEmpty;
   }
 
-  static bool isNotEmpty(String text) {
+  static bool isNotEmpty(String? text) {
     return !isEmpty(text);
   }
 
