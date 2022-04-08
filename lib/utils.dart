@@ -78,7 +78,7 @@ class Utils {
     _askPermission(context: context, handle: handle, permission: Permission.storage);
   }
 
-  static Future<bool> hasPermissionStore(Permission permission) async {
+  static Future<bool> hasPermission(Permission permission) async {
     return await permission.isGranted;
   }
 
