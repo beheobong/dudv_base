@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -17,6 +18,7 @@ class Utils {
   }
 
   static Future navigatePage(BuildContext context, Widget widget) async {
+    log('---||=======> ${widget.runtimeType}',name: 'NAVIGATE');
     return await Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => widget,
     ));
