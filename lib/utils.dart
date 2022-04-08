@@ -78,8 +78,8 @@ class Utils {
     _askPermission(context: context, handle: handle, permission: Permission.storage);
   }
 
-  static Future<bool> hasPermission(Permission permission) async {
-    return await permission.isGranted;
+  static Future<bool> hasPermissionStorage() async {
+    return await Permission.storage.isGranted;
   }
 
   static Future navigatePageRoute(BuildContext context, Widget widget) {

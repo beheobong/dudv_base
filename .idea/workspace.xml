@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3f2a5b6-292a-4bf2-ac13-21b8faed48ae" name="Default Changelist" comment="add log to utils -&gt; navigate">
+    <list default="true" id="f3f2a5b6-292a-4bf2-ac13-21b8faed48ae" name="Default Changelist" comment="add check permisstion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +51,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649387512275</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add check permisstion">
+      <created>1649390589209</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649390589209</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add check permisstion">
+      <created>1649390662176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649390662176</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -73,6 +87,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add log to utils -&gt; navigate" />
-    <option name="LAST_COMMIT_MESSAGE" value="add log to utils -&gt; navigate" />
+    <MESSAGE value="add check permisstion" />
+    <option name="LAST_COMMIT_MESSAGE" value="add check permisstion" />
   </component>
 </project>
