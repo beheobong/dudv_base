@@ -8,6 +8,11 @@ import 'package:permission_handler/permission_handler.dart';
 import 'view/guide_permission_view.dart';
 
 class Utils {
+  static Widget? guidePermissionView;
+  static void setGuiderPmsV(Widget value) {
+    guidePermissionView = value;
+  }
+
   static void showToast(String title, {bool isLong: false}) {
     Fluttertoast.showToast(
       msg: title,
@@ -56,26 +61,32 @@ class Utils {
           handle();
         } else {
           Navigator.of(context, rootNavigator: true).push(PageRouteBuilder(
-              opaque: false, pageBuilder: (BuildContext context, _, __) => GuidePermissionView(permission)));
+              opaque: false,
+              pageBuilder: (BuildContext context, _, __) =>
+                  guidePermissionView ?? GuidePermissionView(permission)));
         }
       });
     }
   }
 
   static void askPermissionGPS(BuildContext context, Function handle) {
-    _askPermission(context: context, handle: handle, permission: Permission.location);
+    _askPermission(
+        context: context, handle: handle, permission: Permission.location);
   }
 
   static void askPermissionPhotos(BuildContext context, Function handle) {
-    _askPermission(context: context, handle: handle, permission: Permission.photos);
+    _askPermission(
+        context: context, handle: handle, permission: Permission.photos);
   }
 
   static void askPermissionCamera(BuildContext context, Function handle) {
-    _askPermission(context: context, handle: handle, permission: Permission.camera);
+    _askPermission(
+        context: context, handle: handle, permission: Permission.camera);
   }
 
   static void askPermissionStore(BuildContext context, Function handle) {
-    _askPermission(context: context, handle: handle, permission: Permission.storage);
+    _askPermission(
+        context: context, handle: handle, permission: Permission.storage);
   }
 
   static Future<bool> hasPermissionStorage() async {
@@ -83,8 +94,8 @@ class Utils {
   }
 
   static Future navigatePageRoute(BuildContext context, Widget widget) {
-    return Navigator.of(context)
-        .push(PageRouteBuilder(opaque: false, pageBuilder: (BuildContext context, _, __) => widget));
+    return Navigator.of(context).push(PageRouteBuilder(
+        opaque: false, pageBuilder: (BuildContext context, _, __) => widget));
   }
 
   static void navigateToRoot(
@@ -94,26 +105,33 @@ class Utils {
   }
 
   static bool imageOk(String? value) {
-    if (value == null || value.trim().isEmpty || !value.contains('http') || value.contains('null')) {
+    if (value == null ||
+        value.trim().isEmpty ||
+        !value.contains('http') ||
+        value.contains('null')) {
       return false;
     }
     return true;
   }
 
   static bool isEmpty(String? text) {
-    return text == null || text.trim().isEmpty || text == 'null' || text.isEmpty;
+    return text == null ||
+        text.trim().isEmpty ||
+        text == 'null' ||
+        text.isEmpty;
   }
 
   static bool isNotEmpty(String? text) {
     return !isEmpty(text);
   }
 
-  static Future showModalDialog(
-      {required BuildContext context,
-      required Widget view,
-      double radius = 10,
-      bool useRootNavigator = false,
-      Color? bg}) {
+  static Future showModalDialog({
+    required BuildContext context,
+    required Widget view,
+    double radius = 10,
+    bool useRootNavigator = false,
+    Color? bg,
+  }) {
     return showDialog(
         context: context,
         useRootNavigator: useRootNavigator,
@@ -124,7 +142,8 @@ class Utils {
             child: Dialog(
               elevation: 0,
               backgroundColor: bg,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(radius))),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(radius))),
               child: view,
             ),
           );
