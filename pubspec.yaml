@@ -1,6 +1,6 @@
 name: dudv_base
 description: Model–view–presenter (MVP) is a derivation of the model–view–controller (MVC) architectural pattern, and is used mostly for building user interfaces.
-version: 1.0.7+17
+version: 1.0.8+18
 homepage: https://github.com/beheobong/dudv_base
 
 environment:
@@ -15,6 +15,7 @@ dependencies:
   logger: ^1.1.0
 
 dev_dependencies:
+  flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
 
