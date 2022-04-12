@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../themes/styles.dart';
+
 class IconIOS {
   static final String iSetting = 'assets/icons_ios/ios_settings.png';
   static final String iNotification = 'assets/icons_ios/ios_notification.png';
@@ -40,7 +42,7 @@ class RowStep extends StatelessWidget {
               )),
           Flexible(
               child: Text(title!,
-                  style: TextStyle(
+                  style: Styles.copyStyle(
                       color: Colors.white, fontWeight: FontWeight.w700)))
         ],
       ),
@@ -51,13 +53,17 @@ class RowStep extends StatelessWidget {
 class GuidePermissionView extends StatelessWidget {
   final Permission permission;
 
-  GuidePermissionView(this.permission);
+  const GuidePermissionView(this.permission, {Key? key}) : super(key: key);
 
-  _closeGuide(context) {
+  static String? closeTx;
+  static String? allowTx;
+  static String? locationTx;
+
+  void _closeGuide(context) {
     Navigator.pop(context);
   }
 
-  _openSetting(context) {
+  void _openSetting(context) {
     Navigator.pop(context);
     openAppSettings();
   }
@@ -65,15 +71,15 @@ class GuidePermissionView extends StatelessWidget {
   String get _getText {
     if (permission == Permission.location ||
         permission == Permission.locationAlways) {
-      return 'Location';
+      return 'Vị trí';
     } else if (permission == Permission.photos) {
-      return 'Photos';
+      return 'Hình ảnh';
     } else if (permission == Permission.microphone) {
       return 'Microphone';
     } else if (permission == Permission.speech) {
-      return 'Speech Recognition';
+      return 'Nhận dạng giọng nói';
     }
-    return 'Camera';
+    return 'Máy ảnh';
   }
 
   String get _getIcon {
@@ -90,23 +96,23 @@ class GuidePermissionView extends StatelessWidget {
 
   String get _getTitle {
     if (permission == Permission.location) {
-      return 'App need position permission always to operate with background cool fine camera notification feature';
+      return 'Ứng dụng cần có quyền vị trí luôn hoạt động với tính năng thông báo camera tốt trong nền';
     }
-    return 'App have no access "$_getText". enable this feature to use $_getText';
+    return 'Ứng dụng không có quyền truy cập "$_getText". Cung cấp quyền để sử dụng tính năng $_getText';
   }
 
   String get _getTitleEnd {
     if (permission == Permission.location) {
-      return '4. Choose always';
+      return '4. Chọn luôn luôn';
     }
-    return '4. Allows the app to use it "$_getText"';
+    return '4. Cho phép ứng dụng để sử dụng "$_getText"';
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(0), // here the desired height
+            preferredSize: Size.fromHeight(0),
             child: AppBar(
                 centerTitle: true,
                 backgroundColor: Colors.black.withOpacity(0.85),
@@ -118,17 +124,17 @@ class GuidePermissionView extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: TextButton(
                   onPressed: () => _closeGuide(context),
-                  child: Text('Close',
-                      style: TextStyle(
+                  child: Text('Đóng',
+                      style: Styles.copyStyle(
                           color: Colors.white, fontWeight: FontWeight.w700)))),
           Padding(
               padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
               child: Text(_getTitle,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white))),
-          RowStep(icon: IconIOS.iSetting, title: '1. Open the settings app'),
-          RowStep(icon: IconIOS.iPrivacy, title: '2. Choose privacy'),
-          RowStep(icon: _getIcon, title: '3. Choose "$_getText"'),
+                  style: Styles.copyStyle(color: Colors.white))),
+          RowStep(icon: IconIOS.iSetting, title: '1. Mở ứng dụng cài đặt'),
+          RowStep(icon: IconIOS.iPrivacy, title: '2. Chọn riêng tư'),
+          RowStep(icon: _getIcon, title: '3. Chọn "$_getText"'),
           RowStep(icon: IconIOS.iSwitch, title: _getTitleEnd),
           TextButton(
               onPressed: () => _openSetting(context),
@@ -138,8 +144,8 @@ class GuidePermissionView extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.blueAccent,
                     borderRadius: BorderRadius.all(Radius.circular(40.0))),
-                child:
-                    Text('Allow access', style: TextStyle(color: Colors.white)),
+                child: Text('Cho phép truy cập',
+                    style: Styles.copyStyle(color: Colors.white)),
               )),
         ])));
   }
