@@ -53,7 +53,7 @@ class Utils {
         if (value != PermissionStatus.granted) {
           permission.request().then((value2) {
             debugPrint('Utils.request $value2');
-            if (value2 != PermissionStatus.denied) {
+            if (value2 == PermissionStatus.granted ) {
               handle();
             }
           });
@@ -68,6 +68,7 @@ class Utils {
       });
     }
   }
+  
 
   static void askPermissionGPS(BuildContext context, Function handle) {
     _askPermission(
