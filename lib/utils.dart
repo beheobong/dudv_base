@@ -14,6 +14,7 @@ class Utils {
   }
 
   static void showToast(String title, {bool isLong: false}) {
+    
     Fluttertoast.showToast(
       msg: title,
       toastLength: isLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
