@@ -9,17 +9,28 @@ import 'view/guide_permission_view.dart';
 
 class Utils {
   static Widget? guidePermissionView;
+
   static void setGuiderPmsV(Widget value) {
     guidePermissionView = value;
   }
 
-  static void showToast(String title, {bool isLong: false}) {
+  static Color? tsTxColor;
+  static Color? tsBgColor;
+
+
+  static void setTs(Color txColor, Color bgColor) {
+    tsTxColor = txColor;
+    tsBgColor = bgColor;
+  }
+
+
+  static void showToast(String title, {bool isLong: true}) {
     Fluttertoast.showToast(
       msg: title,
       toastLength: isLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
-      backgroundColor: Colors.black.withOpacity(0.5),
-      textColor: Colors.white,
+      backgroundColor: tsBgColor ?? Colors.black.withOpacity(0.5),
+      textColor: tsTxColor ?? Colors.white,
     );
   }
 
