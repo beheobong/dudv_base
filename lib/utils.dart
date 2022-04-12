@@ -53,8 +53,13 @@ class Utils {
         if (value != PermissionStatus.granted) {
           permission.request().then((value2) {
             debugPrint('Utils.request $value2');
-            if (value2 == PermissionStatus.granted ) {
+            if (value2 == PermissionStatus.granted) {
               handle();
+            } else {
+              Navigator.of(context, rootNavigator: true).push(PageRouteBuilder(
+                  opaque: false,
+                  pageBuilder: (BuildContext context, _, __) =>
+                      guidePermissionView ?? GuidePermissionView(permission)));
             }
           });
         } else if (value == PermissionStatus.granted) {
@@ -68,7 +73,6 @@ class Utils {
       });
     }
   }
-  
 
   static void askPermissionGPS(BuildContext context, Function handle) {
     _askPermission(
