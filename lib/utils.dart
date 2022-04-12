@@ -13,14 +13,18 @@ class Utils {
     guidePermissionView = value;
   }
 
-  static void showToast(String title, {bool isLong: false}) {
-    
+  static void showToast(
+    String title, {
+    bool isLong: true,
+    Color? clBackground,
+    Color? clTextView,
+  }) {
     Fluttertoast.showToast(
       msg: title,
       toastLength: isLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
-      backgroundColor: Colors.black.withOpacity(0.5),
-      textColor: Colors.white,
+      backgroundColor: clBackground ?? Colors.black.withOpacity(0.5),
+      textColor: clTextView ?? Colors.white,
     );
   }
 
