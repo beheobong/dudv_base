@@ -26,10 +26,6 @@ mixin ApiLoadMore {
     }
   }
 
-  String get offsetKey => 'offset';
-  String get limitKey => 'limit';
-  String get data => 'data';
-
   void nexPage() {
     page = page + limit;
   }
