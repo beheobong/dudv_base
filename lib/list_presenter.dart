@@ -11,7 +11,7 @@ mixin ListPresenter {
   List list = [];
   bool isFirst = true;
 
-  final ScrollController controller = ScrollController();
+  final controller = ScrollController();
   Future apiLoadData({required bool isFirst}) async {}
   void showAppBar() {}
 

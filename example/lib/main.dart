@@ -1,25 +1,30 @@
 import 'package:dudv_base/dudv_base.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 void main() {
-  runApp(Application());
+  runApp(const Application());
 }
 
 class Application extends StatelessWidget {
+  const Application({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: StateNotifierProvider<MyAppPresenter, Count>(
-          create: (context) => MyAppPresenter(context), child: MyApp()),
+          create: (context) => MyAppPresenter(context), child: const MyApp()),
     );
   }
 }
 
 class MyApp extends StatelessWidget  {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,8 +51,9 @@ class MyApp extends StatelessWidget  {
 }
 
 class MyAppPresenter extends StateNotifier<Count>
-    with LocatorMixin, ApiPresenter, LoadingPresenter {
+    with LocatorMixin, LoadingPresenter, ApiPresenter  {
   MyAppPresenter(this.context) : super(Count(0));
+  @override
   final BuildContext context;
   final String _loginFuncKey = 'login_func_key';
 
@@ -61,7 +67,9 @@ class MyAppPresenter extends StateNotifier<Count>
 
   void onLogin() async {
     final res = await onSubmit(_loginFuncKey);
-    print(res);
+    if (kDebugMode) {
+      print(res);
+    }
   }
 
   Future _login() => Future.value(true);

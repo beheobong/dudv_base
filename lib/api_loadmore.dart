@@ -10,22 +10,49 @@ mixin ApiLoadMore {
   List modelHanlde(data);
   Future apiCall(query);
 
+  static String _offset = 'offset';
+  static String _limit = 'limit';
+  static String _data = 'data';
+
+  static void config({String? offset, String? limit, String? data}) {
+    if (offset != null) {
+      _offset = offset;
+    }
+    if (limit != null) {
+      _limit = limit;
+    }
+    if (data != null) {
+      _data = data;
+    }
+  }
+
+  String get offsetKey => 'offset';
+  String get limitKey => 'limit';
+  String get data => 'data';
+
+  void nexPage() {
+    page = page + limit;
+  }
+
   Future apiGet(isFirst, [Map<String, dynamic>? queries]) async {
     if (isFirst) {
       page = 0;
       hashNextPage = true;
     }
     if (!hashNextPage) throw Exception('No more data');
-    Map<String, dynamic> query = {'offset': page, 'limit': '$limit'};
+    Map<String, dynamic> query = {
+      _offset: page,
+      _limit: '$limit',
+    };
     if (queries != null) {
       query.addAll(queries);
     }
     debugPrint('ApiLoadMore $query');
-    page = page + limit;
+    nexPage();
     final res = await apiCall(query);
     debugPrint('ApiClientgetProductStatus $res');
     if (res['success']) {
-      final list = modelHanlde(res['data']);
+      final list = modelHanlde(res[_data]);
       if (list.length < limit) {
         hashNextPage = false;
       }
