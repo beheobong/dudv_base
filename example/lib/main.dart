@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget  {
 }
 
 class MyAppPresenter extends StateNotifier<Count>
-    with LocatorMixin, LoadingPresenter, ApiPresenter  {
+    with LocatorMixin, ApiPresenter, LoadingPresenter   {
   MyAppPresenter(this.context) : super(Count(0));
   @override
   final BuildContext context;
