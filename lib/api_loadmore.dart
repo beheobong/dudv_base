@@ -39,9 +39,9 @@ mixin ApiLoadMore {
     page = page + limit;
   }
 
-  Future apiGet(isFirst, [Map<String, dynamic>? queries]) async {
+  Future apiGet(isFirst, [Map<String, dynamic>? queries, int? initPage]) async {
     if (isFirst) {
-      page = _page;
+      page = initPage ?? _page;
       hashNextPage = true;
     }
     if (!hashNextPage) throw Exception('No more data');
