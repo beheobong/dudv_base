@@ -13,8 +13,14 @@ mixin ApiLoadMore {
   static String _offset = 'offset';
   static String _limit = 'limit';
   static String _data = 'data';
+  static int _page = 0;
 
-  static void config({String? offset, String? limit, String? data}) {
+  static void config({
+    String? offset,
+    String? limit,
+    String? data,
+    int? page,
+  }) {
     if (offset != null) {
       _offset = offset;
     }
@@ -24,6 +30,9 @@ mixin ApiLoadMore {
     if (data != null) {
       _data = data;
     }
+    if (page != null) {
+      _page = page;
+    }
   }
 
   void nexPage() {
@@ -32,7 +41,7 @@ mixin ApiLoadMore {
 
   Future apiGet(isFirst, [Map<String, dynamic>? queries]) async {
     if (isFirst) {
-      page = 0;
+      page = _page;
       hashNextPage = true;
     }
     if (!hashNextPage) throw Exception('No more data');
