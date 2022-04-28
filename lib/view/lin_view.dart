@@ -19,6 +19,6 @@ class LineView extends StatelessWidget {
         margin: margin ?? EdgeInsets.zero,
         height: lineHeight ?? 1,
         width: double.infinity,
-        color: lineColor ??  Styles.grey24);
+        color: lineColor ?? Styles.grey24);
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'api_client.dart';
 
 class MoreApiClient extends ApiClient with ApiLoadMore {
-
   MoreApiClient(BuildContext contex) : super(contex);
 
   @override
@@ -26,5 +25,4 @@ class MoreApiClient extends ApiClient with ApiLoadMore {
   List modelHanlde(data) {
     throw UnimplementedError();
   }
-
 }

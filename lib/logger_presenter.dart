@@ -1,7 +1,7 @@
 import 'package:logger/logger.dart';
 
 mixin LoggerPresenter {
-    final logger = Logger(
+  final logger = Logger(
     printer: PrettyPrinter(),
   );
 }

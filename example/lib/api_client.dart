@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-
-abstract class ApiClient  {
+abstract class ApiClient {
   ApiClient(this.contex) {
     init();
   }
@@ -13,20 +12,19 @@ abstract class ApiClient  {
   final int limit = 40;
   int page = 0;
 
-  void init() {
-  }
+  void init() {}
 
   Future errorHandle(Map<String, dynamic> res) async {
-    if(res['Data'] is Map<String, dynamic> && res['Data'].containsKey('Message')){
+    if (res['Data'] is Map<String, dynamic> &&
+        res['Data'].containsKey('Message')) {
       throw BaseException(res['Data']['Message']);
-    }else if (res.containsKey('message') && res['message'] != null) {
+    } else if (res.containsKey('message') && res['message'] != null) {
       throw BaseException(json.encode(res));
     } else if (res.containsKey('Message') && res['Message'] != null) {
       throw BaseException(res['Message']);
     }
     throw BaseException('Đã có lỗi xảy ra');
   }
-
 }
 
 class BaseException implements Exception {

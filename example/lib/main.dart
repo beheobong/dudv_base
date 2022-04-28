@@ -22,7 +22,7 @@ class Application extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget  {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
@@ -34,7 +34,10 @@ class MyApp extends StatelessWidget  {
       body: Center(
         child: Column(
           children: [
-            Text('Running on: ${context.watch<Count>().value}\n', style: Styles.copyStyle(),),
+            Text(
+              'Running on: ${context.watch<Count>().value}\n',
+              style: Styles.copyStyle(),
+            ),
             BtnView(
                 onPress: context.read<MyAppPresenter>().onLogin, title: 'Login')
           ],
@@ -46,12 +49,10 @@ class MyApp extends StatelessWidget  {
       ),
     );
   }
-
-
 }
 
 class MyAppPresenter extends StateNotifier<Count>
-    with LocatorMixin, ApiPresenter, LoadingPresenter   {
+    with LocatorMixin, ApiPresenter, LoadingPresenter {
   MyAppPresenter(this.context) : super(Count(0));
   @override
   final BuildContext context;

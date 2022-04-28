@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-mixin Presenter  {
+mixin Presenter {
   BuildContext get context;
 
   Future onRefresh() {
@@ -22,7 +22,6 @@ mixin Presenter  {
   void onBack({value}) {
     Navigator.of(context).pop(value);
   }
-
 
   Widget loadingView2({Brightness? brightness}) {
     final iosWidget = Theme(
@@ -48,5 +47,4 @@ mixin Presenter  {
       child: Platform.isAndroid ? androidWidget : iosWidget,
     );
   }
-
 }

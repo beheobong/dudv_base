@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'utils.dart';
 
-mixin ApiPresenter  {
+mixin ApiPresenter {
   void showLoading();
   Future hideLoading();
-  
+
   Map<String, Function> get apiSubmits;
   static ValueChanged<String>? _showError;
   static void setShowError(ValueChanged<String> value) {

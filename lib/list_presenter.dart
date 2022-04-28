@@ -18,7 +18,7 @@ mixin ListPresenter {
   void hideAppBar() {}
 
   void updateState(List datas) {}
-  // vì trùng với 1 vài presenter đã có hàm init rồi 
+  // vì trùng với 1 vài presenter đã có hàm init rồi
   //=> supper các hàm sẽ không đc gọi => đổi init => initList
   initList() {
     controller.addListener(_listenter);
