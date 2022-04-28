@@ -17,18 +17,20 @@ class Utils {
   static Color? tsTxColor;
   static Color? tsBgColor;
 
-
   static void setTs(Color txColor, Color bgColor) {
     tsTxColor = txColor;
     tsBgColor = bgColor;
   }
 
-
-  static void showToast(String title, {bool isLong: true}) {
-    Fluttertoast.showToast(
+  static Future showToast(
+    String title, {
+    bool isLong: true,
+    ToastGravity? gravity,
+  }) {
+    return Fluttertoast.showToast(
       msg: title,
       toastLength: isLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
+      gravity: gravity ?? ToastGravity.CENTER,
       backgroundColor: tsBgColor ?? Colors.black.withOpacity(0.5),
       textColor: tsTxColor ?? Colors.white,
     );
