@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dudv_base/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +20,7 @@ mixin LoadingPresenter {
           height: 100,
           child: Center(
               child: DudvConfig.loadingView ??
-                  (Platform.isAndroid
+                  (Utils.isAndroid
                       ? const CircularProgressIndicator()
                       : const CupertinoActivityIndicator(
                           radius: 15,

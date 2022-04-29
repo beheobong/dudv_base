@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -72,7 +70,7 @@ mixin ListPresenter {
         width: double.infinity,
         height: 100,
         child: Center(
-            child: Platform.isAndroid
+            child: Utils.isAndroid
                 ? const CircularProgressIndicator()
                 : const CupertinoActivityIndicator(
                     radius: 15,

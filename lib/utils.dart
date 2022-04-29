@@ -1,11 +1,12 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'view/guide_permission_view.dart';
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
 class Utils {
   static Widget? guidePermissionView;
@@ -48,7 +49,7 @@ class Utils {
     required Function handle,
     required Permission permission,
   }) {
-    if (Platform.isAndroid) {
+    if (isAndroid) {
       permission.status.then((value) {
         if (value != PermissionStatus.granted) {
           permission.request().then((value2) {
@@ -60,7 +61,7 @@ class Utils {
           handle();
         }
       });
-    } else if (Platform.isIOS) {
+    } else if (isIOS) {
       permission.status.then((value) {
         debugPrint('Utils._askPermission $value');
         if (value != PermissionStatus.granted) {
@@ -167,4 +168,9 @@ class Utils {
           );
         });
   }
+
+  static const bool isWeb = kIsWeb;
+  static final bool isAndroid =
+      (defaultTargetPlatform == TargetPlatform.android);
+  static final bool isIOS = (defaultTargetPlatform == TargetPlatform.iOS);
 }

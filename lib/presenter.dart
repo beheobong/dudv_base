@@ -1,7 +1,8 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'utils.dart';
 
 mixin Presenter {
   BuildContext get context;
@@ -44,7 +45,7 @@ mixin Presenter {
     );
 
     return Center(
-      child: Platform.isAndroid ? androidWidget : iosWidget,
+      child: Utils.isAndroid ? androidWidget : iosWidget,
     );
   }
 }
