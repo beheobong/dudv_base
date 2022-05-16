@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'utils.dart';
+import 'view/loading_view.dart';
 import 'view/no_data_view.dart';
 
 mixin ListPresenter {
@@ -66,15 +66,7 @@ mixin ListPresenter {
   }
 
   Widget loadingView() {
-    return SizedBox(
-        width: double.infinity,
-        height: 100,
-        child: Center(
-            child: Utils.isAndroid
-                ? const CircularProgressIndicator()
-                : const CupertinoActivityIndicator(
-                    radius: 15,
-                  )));
+    return LoadingView();
   }
 
   Widget noDataView({bool isListView = false, String? title, double? size}) {

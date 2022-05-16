@@ -6,12 +6,6 @@ class MoreApiClient extends ApiClient with ApiLoadMore {
   MoreApiClient(BuildContext contex) : super(contex);
 
   @override
-  String get offsetKey => 'Page';
-
-  @override
-  String get limitKey => 'PageSize';
-
-  @override
   Future apiCall(query) {
     throw UnimplementedError();
   }

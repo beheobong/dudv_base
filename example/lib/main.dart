@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 void main() {
+  LoadingView.color(Colors.yellow);
   runApp(const Application());
 }
 
@@ -28,12 +29,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xff213245),
       appBar: AppBar(
         title: const Text('Plugin example app'),
       ),
       body: Center(
         child: Column(
           children: [
+            const LoadingView(),
             Text(
               'Running on: ${context.watch<Count>().value}\n',
               style: Styles.copyStyle(),

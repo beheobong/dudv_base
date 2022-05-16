@@ -7,6 +7,12 @@ import 'config.dart';
 mixin LoadingPresenter {
   bool _isShowDialog = false;
 
+  static Color? _color;
+
+  static void color(Color color) {
+    _color = color;
+  }
+
   BuildContext get context;
 
   void showLoading({bool useRootNavigator = false}) {
@@ -21,9 +27,12 @@ mixin LoadingPresenter {
           child: Center(
               child: DudvConfig.loadingView ??
                   (Utils.isAndroid
-                      ? const CircularProgressIndicator()
-                      : const CupertinoActivityIndicator(
+                      ? CircularProgressIndicator(
+                        color: _color,
+                      )
+                      : CupertinoActivityIndicator(
                           radius: 15,
+                          color: _color,
                         )))),
     );
   }
