@@ -23,10 +23,10 @@ class NoDataView extends StatelessWidget {
     }
     var tv = Text(
       content ?? DudvConfig.noDataValue,
-      style: style ?? TextStyle(color: Colors.black),
+      style: style ?? const TextStyle(color: Colors.black),
     );
 
-    if (isListView)
+    if (isListView) {
       return Center(
         child: ListView(
           shrinkWrap: true,
@@ -37,6 +37,7 @@ class NoDataView extends StatelessWidget {
           ],
         ),
       );
+    }
 
     return Center(
       child: Container(

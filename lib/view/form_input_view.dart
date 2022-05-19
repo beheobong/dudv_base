@@ -127,7 +127,7 @@ class _FormInputStateView extends State<FormInputView> {
           disabledBorder: _disabledBorder,
           enabledBorder: _enabledBorder,
           contentPadding: widget.contentPadding,
-          prefixIconConstraints: BoxConstraints(),
+          prefixIconConstraints: const BoxConstraints(),
           hintText: widget.hint,
           prefixIcon: widget.prefixIcon,
           hintStyle: widget.hintStyle ??
@@ -156,11 +156,11 @@ class _FormInputStateView extends State<FormInputView> {
                     require: widget.requireTitle,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 if (widget.maxLength != TextField.noMaxLength &&
                     widget.showMaxLength)
                   Padding(
-                    padding: EdgeInsets.only(right: 10, bottom: 10),
+                    padding: const EdgeInsets.only(right: 10, bottom: 10),
                     child: Text(
                       '(${widget.maxLength})',
                       style: Styles.copyStyle(),
@@ -175,9 +175,9 @@ class _FormInputStateView extends State<FormInputView> {
               decoration: BoxDecoration(
                   border: Border(
                       left: widget.leftBorder
-                          ? BorderSide(width: 1, color: Styles.grey29)
+                          ? const BorderSide(width: 1, color: Styles.grey29)
                           : BorderSide.none,
-                      top: BorderSide(width: 1, color: Styles.grey29),
+                      top: const BorderSide(width: 1, color: Styles.grey29),
                       bottom: BorderSide(
                           width: 1,
                           color: _msgError != null
@@ -215,7 +215,7 @@ class _FormInputStateView extends State<FormInputView> {
     if (widget.type == 2) {
       return EdgeInsets.zero;
     }
-    return widget.margin ?? EdgeInsets.symmetric(horizontal: 20);
+    return widget.margin ?? const EdgeInsets.symmetric(horizontal: 20);
   }
 
   get _suffixIcon {
@@ -257,12 +257,12 @@ class _FormInputStateView extends State<FormInputView> {
     return widget.disabledBorder;
   }
 
-  get _boderUnderRed => UnderlineInputBorder(
+  get _boderUnderRed => const UnderlineInputBorder(
           borderSide: BorderSide(
         color: Colors.red,
       ));
 
-  get _boderUnderGrey => OutlineInputBorder(
+  get _boderUnderGrey => const OutlineInputBorder(
         borderSide: BorderSide(color: Styles.grey29, width: 1),
         borderRadius: BorderRadius.zero,
       );

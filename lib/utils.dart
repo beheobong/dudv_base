@@ -25,7 +25,7 @@ class Utils {
 
   static Future showToast(
     String title, {
-    bool isLong: true,
+    bool isLong = true,
     ToastGravity? gravity,
   }) {
     return Fluttertoast.showToast(
@@ -150,12 +150,16 @@ class Utils {
     double radius = 10,
     bool useRootNavigator = false,
     Color? bg,
+    ValueChanged<BuildContext>? ctx,
   }) {
     return showDialog(
         context: context,
         useRootNavigator: useRootNavigator,
         barrierDismissible: false,
-        builder: (BuildContext context) {
+        builder: (BuildContext mContext) {
+          if (ctx != null) {
+            ctx(mContext);
+          }
           return WillPopScope(
             onWillPop: () async => false,
             child: Dialog(

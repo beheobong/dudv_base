@@ -29,7 +29,7 @@ class ActionNotiView extends StatelessWidget {
             child: Container(
               width: 8,
               height: 8,
-              margin: EdgeInsets.only(right: 10, top: 5),
+              margin: const EdgeInsets.only(right: 10, top: 5),
               decoration: BoxDecoration(
                 color: Styles.orange,
                 borderRadius: BorderRadius.circular(4),

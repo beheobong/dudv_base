@@ -30,10 +30,10 @@ mixin Presenter {
         cupertinoOverrideTheme:
             CupertinoThemeData(brightness: brightness ?? Brightness.dark),
       ),
-      child: CupertinoActivityIndicator(radius: 15),
+      child: const CupertinoActivityIndicator(radius: 15),
     );
 
-    final androidWidget = SizedBox(
+    const androidWidget = SizedBox(
       width: 30,
       height: 30,
       child: FittedBox(

@@ -19,7 +19,7 @@ class AppBarSearchView extends StatefulWidget implements PreferredSizeWidget {
   _AppBarSearchViewState createState() => _AppBarSearchViewState();
 
   @override
-  Size get preferredSize => Size(double.infinity, kToolbarHeight);
+  Size get preferredSize => const Size(double.infinity, kToolbarHeight);
 }
 
 class _AppBarSearchViewState extends State<AppBarSearchView> {
@@ -36,7 +36,7 @@ class _AppBarSearchViewState extends State<AppBarSearchView> {
           top: 8,
           bottom: 8,
         ),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: Colors.white,
             border: Border(bottom: BorderSide(width: 1, color: Styles.grey))),
         alignment: Alignment.center,
@@ -59,14 +59,14 @@ class _AppBarSearchViewState extends State<AppBarSearchView> {
                       fillColor: Styles.grey41,
                       contentPadding: EdgeInsets.zero,
                       filled: true,
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         Icons.search,
                         color: Styles.grey54,
                       ),
                       suffixIcon: !_showClear
                           ? null
                           : IconButton(
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.clear,
                                 size: 18,
                                 color: Styles.black7,

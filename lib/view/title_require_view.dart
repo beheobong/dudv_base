@@ -15,11 +15,12 @@ class TitleRequireView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!require)
+    if (!require) {
       return Text(
         title,
         style: Styles.copyStyle(),
       );
+    }
     return RichText(
       textAlign: TextAlign.start,
       text: TextSpan(

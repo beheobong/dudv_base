@@ -27,7 +27,7 @@ class BtnView extends StatelessWidget {
         width: double.infinity,
         alignment: Alignment.center,
         margin: margin ?? EdgeInsets.zero,
-        padding: padding ?? EdgeInsets.symmetric(vertical: 15),
+        padding: padding ?? const EdgeInsets.symmetric(vertical: 15),
         decoration: decoration ??
             BoxDecoration(
                 color: Styles.colorMain,

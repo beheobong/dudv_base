@@ -5,7 +5,7 @@ import 'dart:math' as math;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-enum GroupedListOrder { ASC, DESC }
+enum GroupedListOrder { asc, desc }
 
 /// A groupable list of widgets similar to [ListView], execpt that the
 /// items can be sectioned into groups.
@@ -180,7 +180,7 @@ class GroupedListView<T, E> extends StatefulWidget {
   final RefreshCallback? onRefresh;
 
   /// Creates a [GroupedListView]
-  GroupedListView({
+  const GroupedListView({
     Key? key,
     required this.elements,
     required this.groupBy,
@@ -190,7 +190,7 @@ class GroupedListView<T, E> extends StatefulWidget {
     this.itemBuilder,
     this.indexedItemBuilder,
     this.itemComparator,
-    this.order = GroupedListOrder.ASC,
+    this.order = GroupedListOrder.asc,
     this.sort = true,
     this.useStickyGroupSeparators = false,
     this.separator = const SizedBox.shrink(),
@@ -276,7 +276,7 @@ class _GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
             if (widget.onRefresh != null) {
               return widget.onRefresh!();
             }
-            return Future.value(true);
+            return Future.value();
           },
           child: ListView.builder(
             key: widget.key,
@@ -382,6 +382,7 @@ class _GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
     var elements = widget.elements;
     if (widget.sort && elements.isNotEmpty) {
       elements.sort((e1, e2) {
+        // ignore: prefer_typing_uninitialized_variables
         var compareResult;
         // compare groups
         if (widget.groupComparator != null) {
@@ -401,7 +402,7 @@ class _GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
         }
         return compareResult;
       });
-      if (widget.order == GroupedListOrder.DESC) {
+      if (widget.order == GroupedListOrder.desc) {
         elements = elements.reversed.toList();
       }
     }

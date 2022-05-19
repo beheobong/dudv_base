@@ -14,6 +14,7 @@ mixin LoadingPresenter {
   }
 
   BuildContext get context;
+  BuildContext? _ctx;
 
   void showLoading({bool useRootNavigator = false}) {
     _isShowDialog = true;
@@ -21,6 +22,9 @@ mixin LoadingPresenter {
       context: context,
       useRootNavigator: useRootNavigator,
       bg: DudvConfig.bgLoadingValue,
+      ctx: (mContext) {
+        _ctx = mContext;
+      },
       view: SizedBox(
           width: 100,
           height: 100,
@@ -28,8 +32,8 @@ mixin LoadingPresenter {
               child: DudvConfig.loadingView ??
                   (Utils.isAndroid
                       ? CircularProgressIndicator(
-                        color: _color,
-                      )
+                          color: _color,
+                        )
                       : CupertinoActivityIndicator(
                           radius: 15,
                           color: _color,
@@ -40,8 +44,8 @@ mixin LoadingPresenter {
   Future hideLoading() async {
     if (!_isShowDialog) return;
     return Future.delayed(const Duration(milliseconds: 300), () {
-      if (Navigator.of(context).canPop()) {
-        Navigator.of(context).pop();
+      if (Navigator.of(_ctx!).canPop()) {
+        Navigator.of(_ctx!).pop();
       }
       _isShowDialog = false;
     });

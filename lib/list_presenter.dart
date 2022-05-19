@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -66,7 +67,7 @@ mixin ListPresenter {
   }
 
   Widget loadingView() {
-    return LoadingView();
+    return const LoadingView();
   }
 
   Widget noDataView({bool isListView = false, String? title, double? size}) {
@@ -94,14 +95,16 @@ mixin ListPresenter {
   }
 
   Widget separatorBuilder(BuildContext context, int index) {
-    return Divider();
+    return const Divider();
   }
 
   void scrollToTop() {
     if (controller.offset == 0.0) {
       controller.jumpTo(-200);
     } else {
-      print('Scrool to top');
+      if (kDebugMode) {
+        print('Scrool to top');
+      }
       controller.animateTo(0.0,
           curve: Curves.easeOut, duration: const Duration(milliseconds: 300));
     }
