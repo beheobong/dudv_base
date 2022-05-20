@@ -31,7 +31,7 @@ mixin ListPresenter {
       }
     } catch (e, stack) {
       debugPrint('$e $stack');
-      Utils.showToast(e.toString());
+      Utils.handleError(e);
     }
     isFirst = false;
     updateState(list);

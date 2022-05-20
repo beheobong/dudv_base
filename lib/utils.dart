@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -35,6 +36,25 @@ class Utils {
       backgroundColor: tsBgColor ?? Colors.black.withOpacity(0.5),
       textColor: tsTxColor ?? Colors.white,
     );
+  }
+
+  static void handleError(e) {
+    final eValue = e.toString();
+    if (eValue.contains('{')) {
+      try {
+        final _eJson = jsonDecode(eValue);
+        if (_eJson is Map && _eJson.containsKey('message')) {
+          showToast(_eJson['message']);
+        } else {
+          showToast(eValue);
+        }
+      } catch (e1, stack1) {
+        debugPrint('$e1 $stack1');
+        showToast(eValue);
+      }
+    } else {
+      showToast(eValue);
+    }
   }
 
   static Future navigatePage(BuildContext context, Widget widget) async {
