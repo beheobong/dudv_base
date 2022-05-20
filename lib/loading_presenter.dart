@@ -42,7 +42,7 @@ mixin LoadingPresenter {
   }
 
   Future hideLoading() async {
-    if (!_isShowDialog) return;
+    if (!_isShowDialog || _ctx == null) return;
     return Future.delayed(const Duration(milliseconds: 300), () {
       if (Navigator.of(_ctx!).canPop()) {
         Navigator.of(_ctx!).pop();

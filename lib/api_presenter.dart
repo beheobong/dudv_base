@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'utils.dart';
 
@@ -39,7 +41,22 @@ mixin ApiPresenter {
         if (_showError != null) {
           _showError!(e.toString());
         } else {
-          Utils.showToast(e.toString());
+          final eValue = e.toString();
+          if (eValue.contains('{')) {
+            try {
+              final _eJson = jsonDecode(eValue);
+              if (_eJson is Map && _eJson.containsKey('message')) {
+                Utils.showToast(_eJson['message']);
+              } else {
+                Utils.showToast(eValue);
+              }
+            } catch (e1, stack1) {
+              debugPrint('$e1 $stack1');
+              Utils.showToast(eValue);
+            }
+          } else {
+            Utils.showToast(eValue);
+          }
         }
       }
       return null;
