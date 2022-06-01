@@ -1,3 +1,6 @@
+## [1.1.7+7] - 2022-06-01.
+
+* fix hide loading
 ## [1.1.7+3] - 2022-19-05.
 
 * fix hide loading
