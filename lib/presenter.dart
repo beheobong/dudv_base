@@ -24,22 +24,22 @@ mixin Presenter {
     Navigator.of(context).pop(value);
   }
 
-  Widget loadingView2({Brightness? brightness}) {
+  Widget loadingView2({Brightness? brightness, Color? color}) {
     final iosWidget = Theme(
       data: ThemeData(
         cupertinoOverrideTheme:
             CupertinoThemeData(brightness: brightness ?? Brightness.dark),
       ),
-      child: const CupertinoActivityIndicator(radius: 15),
+      child: CupertinoActivityIndicator(radius: 15, color: color),
     );
 
-    const androidWidget = SizedBox(
+    final androidWidget = SizedBox(
       width: 30,
       height: 30,
       child: FittedBox(
         child: CircularProgressIndicator(
           strokeWidth: 3,
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          valueColor: AlwaysStoppedAnimation<Color>(color ?? Colors.white),
         ),
       ),
     );
