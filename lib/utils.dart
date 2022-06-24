@@ -197,4 +197,17 @@ class Utils {
   static final bool isAndroid =
       (defaultTargetPlatform == TargetPlatform.android);
   static final bool isIOS = (defaultTargetPlatform == TargetPlatform.iOS);
+  
+
+  static Map<String, dynamic>? toJson(String? value) {
+    try {
+      if (isNotEmpty(value) && value!.contains('{')) {
+        return jsonDecode(value);
+      }
+      return null;
+    } catch (e, stack) {
+      debugPrint('$e $stack');
+      return null;
+    }
+  }
 }
