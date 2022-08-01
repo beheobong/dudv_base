@@ -7,8 +7,12 @@ mixin ApiPresenter {
 
   Map<String, Function> get apiSubmits;
   static ValueChanged<String>? _showError;
-  static void setShowError(ValueChanged<String> value) {
+  static Function(dynamic e, dynamic stack)? _catchError;
+  
+  static void setShowError(ValueChanged<String> value,
+      {Function(dynamic e, dynamic stack)? catchError}) {
     _showError = value;
+    _catchError = catchError;
   }
 
   Future onSubmit(String func,
@@ -31,6 +35,9 @@ mixin ApiPresenter {
     } catch (e, stack) {
       if (logError) {
         debugPrint('$e $stack');
+        if (_catchError != null) {
+          _catchError!(e, stack);
+        }
       }
       if (loading) {
         await hideLoading();
