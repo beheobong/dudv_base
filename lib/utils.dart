@@ -64,7 +64,7 @@ class Utils {
     ));
   }
 
-  static void _askPermission({
+  static void askPermission({
     required BuildContext context,
     required Function handle,
     required Permission permission,
@@ -109,22 +109,27 @@ class Utils {
   }
 
   static void askPermissionGPS(BuildContext context, Function handle) {
-    _askPermission(
+    askPermission(
         context: context, handle: handle, permission: Permission.location);
   }
 
   static void askPermissionPhotos(BuildContext context, Function handle) {
-    _askPermission(
+    askPermission(
         context: context, handle: handle, permission: Permission.photos);
   }
 
   static void askPermissionCamera(BuildContext context, Function handle) {
-    _askPermission(
+    askPermission(
         context: context, handle: handle, permission: Permission.camera);
   }
 
+  static void askPermissionMic(BuildContext context, Function handle) {
+    askPermission(
+        context: context, handle: handle, permission: Permission.microphone);
+  }
+
   static void askPermissionStore(BuildContext context, Function handle) {
-    _askPermission(
+    askPermission(
         context: context, handle: handle, permission: Permission.storage);
   }
 
