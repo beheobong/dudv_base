@@ -25,9 +25,9 @@ mixin ListPresenter {
 
   Future loadData() async {
     try {
-      final _list = await apiLoadData(isFirst: true);
-      if (_list is List) {
-        list = _list;
+      final listValue = await apiLoadData(isFirst: true);
+      if (listValue is List) {
+        list = listValue;
       }
     } catch (e, stack) {
       debugPrint('$e $stack');
@@ -39,9 +39,9 @@ mixin ListPresenter {
 
   void loadMore() async {
     try {
-      final _list = await apiLoadData(isFirst: false);
-      if (_list.isNotEmpty) {
-        list.addAll(_list);
+      final listValue = await apiLoadData(isFirst: false);
+      if (listValue.isNotEmpty) {
+        list.addAll(listValue);
       }
     } catch (e, stack) {
       debugPrint('$e $stack');

@@ -258,7 +258,7 @@ class _GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
   Widget build(BuildContext context) {
     _sortedElements = _sortElements();
     var hiddenIndex = widget.reverse ? _sortedElements.length * 2 - 1 : 0;
-    var _isSeparator =
+    var isSeparatorValue =
         widget.reverse ? (int i) => i.isOdd : (int i) => i.isEven;
 
     if (widget.reverse) {
@@ -307,7 +307,7 @@ class _GroupedListViewState<T, E> extends State<GroupedListView<T, E>> {
                     child: _buildGroupSeparator(_sortedElements[actualIndex]),
                   );
                 }
-                if (_isSeparator(index)) {
+                if (isSeparatorValue(index)) {
                   var curr = widget.groupBy(_sortedElements[actualIndex]);
                   var prev = widget.groupBy(
                       _sortedElements[actualIndex + (widget.reverse ? 1 : -1)]);

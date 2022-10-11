@@ -88,7 +88,7 @@ class FormInputView extends StatefulWidget {
   final int? type;
 
   @override
-  _FormInputStateView createState() => _FormInputStateView();
+  State<StatefulWidget> createState() => _FormInputStateView();
 }
 
 class _FormInputStateView extends State<FormInputView> {
@@ -171,7 +171,6 @@ class _FormInputStateView extends State<FormInputView> {
           if (widget.type == 1) textField,
           if (widget.type == 2)
             Container(
-              child: textField,
               decoration: BoxDecoration(
                   border: Border(
                       left: widget.leftBorder
@@ -183,6 +182,7 @@ class _FormInputStateView extends State<FormInputView> {
                           color: _msgError != null
                               ? Styles.red2
                               : Styles.grey29))),
+              child: textField,
             ),
           if (_msgError != null)
             Padding(

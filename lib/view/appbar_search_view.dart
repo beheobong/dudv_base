@@ -16,7 +16,7 @@ class AppBarSearchView extends StatefulWidget implements PreferredSizeWidget {
   final Widget? leading;
 
   @override
-  _AppBarSearchViewState createState() => _AppBarSearchViewState();
+  State<StatefulWidget> createState() => _AppBarSearchViewState();
 
   @override
   Size get preferredSize => const Size(double.infinity, kToolbarHeight);

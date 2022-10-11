@@ -6,14 +6,14 @@ mixin FormPresenter {
 
   bool get valid {
     hideKeyBoard();
-    bool _valid = true;
+    bool validValue = true;
     for (var element in keys) {
       if (element.currentState != null &&
           !element.currentState.checkValidate()) {
-        _valid = false;
+        validValue = false;
       }
     }
-    return _valid;
+    return validValue;
   }
 
   void resetValid() {

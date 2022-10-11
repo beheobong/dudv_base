@@ -42,9 +42,9 @@ class Utils {
     final eValue = e.toString();
     if (eValue.contains('{')) {
       try {
-        final _eJson = jsonDecode(eValue);
-        if (_eJson is Map && _eJson.containsKey('message')) {
-          showToast(_eJson['message']);
+        final eJsonValue = jsonDecode(eValue);
+        if (eJsonValue is Map && eJsonValue.containsKey('message')) {
+          showToast(eJsonValue['message']);
         } else {
           showToast(eValue);
         }
