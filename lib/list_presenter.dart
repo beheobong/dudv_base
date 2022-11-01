@@ -62,7 +62,7 @@ mixin ListPresenter {
       showAppBar();
     }
     if (position.pixels == 0) {
-      hideAppBar();
+      showAppBar();
     }
   }
 
