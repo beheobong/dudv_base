@@ -8,7 +8,7 @@ mixin ApiPresenter {
   Map<String, Function> get apiSubmits;
   static ValueChanged<String>? _showError;
   static Function(dynamic e, dynamic stack)? _catchError;
-  
+
   static void setShowError(ValueChanged<String> value,
       {Function(dynamic e, dynamic stack)? catchError}) {
     _showError = value;

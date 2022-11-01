@@ -20,7 +20,7 @@ class RowStep extends StatelessWidget {
   final String? icon;
   final String? title;
 
-  const RowStep({this.icon, this.title, Key? key}): super(key: key);
+  const RowStep({this.icon, this.title, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -120,32 +120,34 @@ class GuidePermissionView extends StatelessWidget {
         backgroundColor: Colors.black.withOpacity(0.85),
         body: Column(children: <Widget>[
           Container(
-          alignment: Alignment.centerRight,
-          child: TextButton(
-              onPressed: () => _closeGuide(context),
-              child: Text('Đóng',
-                  style: Styles.copyStyle(
-                      color: Colors.white, fontWeight: FontWeight.w700)))),
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                  onPressed: () => _closeGuide(context),
+                  child: Text('Đóng',
+                      style: Styles.copyStyle(
+                          color: Colors.white, fontWeight: FontWeight.w700)))),
           Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
-          child: Text(_getTitle,
-              textAlign: TextAlign.center,
-              style: Styles.copyStyle(color: Colors.white))),
-          const RowStep(icon: IconIOS.iSetting, title: '1. Mở ứng dụng cài đặt'),
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+              child: Text(_getTitle,
+                  textAlign: TextAlign.center,
+                  style: Styles.copyStyle(color: Colors.white))),
+          const RowStep(
+              icon: IconIOS.iSetting, title: '1. Mở ứng dụng cài đặt'),
           const RowStep(icon: IconIOS.iPrivacy, title: '2. Chọn riêng tư'),
           RowStep(icon: _getIcon, title: '3. Chọn "$_getText"'),
           RowStep(icon: IconIOS.iSwitch, title: _getTitleEnd),
           TextButton(
-          onPressed: () => _openSetting(context),
-          child: Container(
-            margin: const EdgeInsets.only(top: 20),
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
-            decoration: const BoxDecoration(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.all(Radius.circular(40.0))),
-            child: Text('Cho phép truy cập',
-                style: Styles.copyStyle(color: Colors.white)),
-          )),
+              onPressed: () => _openSetting(context),
+              child: Container(
+                margin: const EdgeInsets.only(top: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
+                decoration: const BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.all(Radius.circular(40.0))),
+                child: Text('Cho phép truy cập',
+                    style: Styles.copyStyle(color: Colors.white)),
+              )),
         ]));
   }
 }

@@ -4,7 +4,7 @@ mixin Styles {
   static const double spacingGrid = 15;
   static String font = 'Roboto';
   static const double sizeFont = 14;
-  static const Color bg4 =  Color(0xff1A1A1A);
+  static const Color bg4 = Color(0xff1A1A1A);
   static const double sizeHorizontal = 20;
 
   static const double borderRadius = 4;
