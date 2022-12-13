@@ -9,6 +9,7 @@ import 'view/no_data_view.dart';
 mixin ListPresenter {
   List list = [];
   bool isFirst = true;
+  BuildContext get context;
 
   final controller = ScrollController();
   Future apiLoadData({required bool isFirst}) async {}
@@ -31,7 +32,7 @@ mixin ListPresenter {
       }
     } catch (e, stack) {
       debugPrint('$e $stack');
-      Utils.handleError(e);
+      Utils.handleError(context, e);
     }
     isFirst = false;
     updateState(list);

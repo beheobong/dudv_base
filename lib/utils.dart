@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:dudv_base/themes/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -18,10 +19,16 @@ class Utils {
 
   static Color? tsTxColor;
   static Color? tsBgColor;
+  static Widget? tsChild;
 
-  static void setTs(Color txColor, Color bgColor) {
+  static void setTs({
+    Color? txColor,
+    Color? bgColor,
+    child,
+  }) {
     tsTxColor = txColor;
     tsBgColor = bgColor;
+    tsChild = child;
   }
 
   static Future showToast(
@@ -38,22 +45,50 @@ class Utils {
     );
   }
 
-  static void handleError(e) {
+  static void showToastCx(
+    BuildContext context, {
+    Widget? child,
+    String? title,
+    Duration? toastDuration,
+    ToastGravity? gravity,
+  }) {
+    FToast()
+      ..init(context)
+      ..showToast(
+        child: child ??
+            Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25.0),
+                color: tsBgColor ?? Colors.black.withOpacity(0.5),
+              ),
+              child: Text(
+                title ?? '',
+                style: Styles.copyStyle(color: tsTxColor ?? Colors.white),
+              ),
+            ),
+        toastDuration: toastDuration ?? const Duration(seconds: 3),
+        gravity: gravity ?? ToastGravity.CENTER,
+      );
+  }
+
+  static void handleError(BuildContext context, e) {
     final eValue = e.toString();
     if (eValue.contains('{')) {
       try {
         final eJsonValue = jsonDecode(eValue);
         if (eJsonValue is Map && eJsonValue.containsKey('message')) {
-          showToast(eJsonValue['message']);
+          showToastCx(context, title: eJsonValue['message']);
         } else {
-          showToast(eValue);
+          showToastCx(context, title: eValue);
         }
       } catch (e1, stack1) {
         debugPrint('$e1 $stack1');
-        showToast(eValue);
+        showToastCx(context, title: eValue);
       }
     } else {
-      showToast(eValue);
+      showToastCx(context, title: eValue);
     }
   }
 

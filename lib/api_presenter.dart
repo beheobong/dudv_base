@@ -1,9 +1,10 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'utils.dart';
 
 mixin ApiPresenter {
   void showLoading();
   Future hideLoading();
+  BuildContext get context;
 
   Map<String, Function> get apiSubmits;
   static ValueChanged<String>? _showError;
@@ -29,7 +30,8 @@ mixin ApiPresenter {
         await hideLoading();
       }
       if (msgSuc != null) {
-        Utils.showToast(msgSuc);
+        // ignore: use_build_context_synchronously
+        Utils.showToastCx(context, title: msgSuc);
       }
       return result;
     } catch (e, stack) {
@@ -46,7 +48,8 @@ mixin ApiPresenter {
         if (_showError != null) {
           _showError!(e.toString());
         } else {
-          Utils.handleError(e);
+          // ignore: use_build_context_synchronously
+          Utils.handleError(context, e);
         }
       }
       return null;
