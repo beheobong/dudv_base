@@ -1,3 +1,6 @@
+## [1.1.9+19] - 2022-12-20.
+
+* Add function updateDate in ListPresenter
 ## [1.1.8+18] - 2022-01-11.
 
 * show Toast custom

@@ -16,8 +16,12 @@ mixin ListPresenter {
   void showAppBar() {}
 
   void hideAppBar() {}
-
+  // có 2 cách sử dụng
+  // 1 là updateState để lấy tất cả ds
   void updateState(List datas) {}
+  // 2 là update lẻ theo từng hàm load dữ liệu
+  // để phân biệt lần đầu vs lần sau thì tự xử lý ở view
+  void updateData(List datas) {}
   // vì trùng với 1 vài presenter đã có hàm init rồi
   //=> supper các hàm sẽ không đc gọi => đổi init => initList
   initList() {
@@ -29,6 +33,7 @@ mixin ListPresenter {
       final listValue = await apiLoadData(isFirst: true);
       if (listValue is List) {
         list = listValue;
+        updateData(listValue);
       }
     } catch (e, stack) {
       debugPrint('$e $stack');
@@ -42,6 +47,7 @@ mixin ListPresenter {
     try {
       final listValue = await apiLoadData(isFirst: false);
       if (listValue.isNotEmpty) {
+        updateData(listValue);
         list.addAll(listValue);
       }
     } catch (e, stack) {
