@@ -20,4 +20,15 @@ class DudvConfig {
       bgLoadingValue = bgLoading;
     }
   }
+
+  static ValueChanged<String>? showError;
+  static Function(dynamic e, dynamic stack)? catchError;
+
+  static void setShowError(
+    ValueChanged<String> value, {
+    Function(dynamic e, dynamic stack)? catchError,
+  }) {
+    showError = value;
+    catchError = catchError;
+  }
 }

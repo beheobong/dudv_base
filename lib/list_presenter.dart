@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'config.dart';
 import 'utils.dart';
 import 'view/loading_view.dart';
 import 'view/no_data_view.dart';
@@ -36,8 +37,16 @@ mixin ListPresenter {
         updateData(listValue);
       }
     } catch (e, stack) {
+      if (DudvConfig.catchError != null) {
+        DudvConfig.catchError!(e, stack);
+      }
       debugPrint('$e $stack');
-      Utils.handleError(context, e);
+      if (DudvConfig.showError != null) {
+        DudvConfig.showError!(e.toString());
+      } else {
+        // ignore: use_build_context_synchronously
+        Utils.handleError(context, e);
+      }
     }
     isFirst = false;
     updateState(list);

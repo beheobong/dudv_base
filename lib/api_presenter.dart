@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'config.dart';
 import 'utils.dart';
 
 mixin ApiPresenter {
@@ -7,20 +8,13 @@ mixin ApiPresenter {
   BuildContext get context;
 
   Map<String, Function> get apiSubmits;
-  static ValueChanged<String>? _showError;
-  static Function(dynamic e, dynamic stack)? _catchError;
 
-  static void setShowError(ValueChanged<String> value,
-      {Function(dynamic e, dynamic stack)? catchError}) {
-    _showError = value;
-    _catchError = catchError;
-  }
-
-  Future onSubmit(String func,
-      {String? msgSuc,
-      bool loading = true,
-      bool showError = true,
-      bool logError = true}) async {
+  Future onSubmit(
+    String func, {
+    String? msgSuc,
+    bool loading = true,
+    bool showError = true,
+  }) async {
     if (loading) {
       showLoading();
     }
@@ -35,22 +29,18 @@ mixin ApiPresenter {
       }
       return result;
     } catch (e, stack) {
-      if (logError) {
-        debugPrint('$e $stack');
-        if (_catchError != null) {
-          _catchError!(e, stack);
-        }
-      }
       if (loading) {
         await hideLoading();
       }
-      if (showError) {
-        if (_showError != null) {
-          _showError!(e.toString());
-        } else {
-          // ignore: use_build_context_synchronously
-          Utils.handleError(context, e);
-        }
+      if (DudvConfig.catchError != null) {
+        DudvConfig.catchError!(e, stack);
+      }
+      debugPrint('$e $stack');
+      if (DudvConfig.showError != null) {
+        DudvConfig.showError!(e.toString());
+      } else {
+        // ignore: use_build_context_synchronously
+        Utils.handleError(context, e);
       }
       return null;
     }
