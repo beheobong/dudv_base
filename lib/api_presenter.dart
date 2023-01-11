@@ -36,12 +36,15 @@ mixin ApiPresenter {
         DudvConfig.catchError!(e, stack);
       }
       debugPrint('$e $stack');
-      if (DudvConfig.showError != null && showError) {
-        DudvConfig.showError!(e.toString());
-      } else {
-        // ignore: use_build_context_synchronously
-        Utils.handleError(context, e);
+      if (showError) {
+        if (DudvConfig.showError != null) {
+          DudvConfig.showError!(e.toString());
+        } else {
+          // ignore: use_build_context_synchronously
+          Utils.handleError(context, e);
+        }
       }
+
       return null;
     }
   }
