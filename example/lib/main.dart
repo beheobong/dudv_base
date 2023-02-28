@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
-import 'package:state_notifier/state_notifier.dart';
 
 void main() {
   LoadingView.color(Colors.yellow);

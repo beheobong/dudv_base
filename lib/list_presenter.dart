@@ -10,11 +10,15 @@ import 'view/no_data_view.dart';
 mixin ListPresenter {
   List list = [];
   bool isFirst = true;
+  bool showErr = true;
   BuildContext get context;
 
   final controller = ScrollController();
   Future apiLoadData({required bool isFirst}) async {}
   void showAppBar() {}
+  void handleError(e) {
+    Utils.handleError(context, e);
+  }
 
   void hideAppBar() {}
   // có 2 cách sử dụng
@@ -25,7 +29,8 @@ mixin ListPresenter {
   void updateData(List datas) {}
   // vì trùng với 1 vài presenter đã có hàm init rồi
   //=> supper các hàm sẽ không đc gọi => đổi init => initList
-  initList() {
+  initList({bool notHandle = true}) {
+    showErr = notHandle;
     controller.addListener(_listenter);
   }
 
@@ -44,8 +49,11 @@ mixin ListPresenter {
       if (DudvConfig.showError != null) {
         DudvConfig.showError!(e.toString());
       } else {
-        // ignore: use_build_context_synchronously
-        Utils.handleError(context, e);
+        if (showErr) {
+          Utils.handleError(context, e);
+        } else {
+          handleError(e);
+        }
       }
     }
     isFirst = false;
@@ -61,6 +69,9 @@ mixin ListPresenter {
       }
     } catch (e, stack) {
       debugPrint('$e $stack');
+      if (!showErr) {
+        handleError(e);
+      }
     }
     updateState(list);
   }
