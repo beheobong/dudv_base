@@ -46,14 +46,14 @@ mixin ListPresenter {
         DudvConfig.catchError!(e, stack);
       }
       debugPrint('$e $stack');
-      if (DudvConfig.showError != null) {
-        DudvConfig.showError!(e.toString());
-      } else {
-        if (showErr) {
-          Utils.handleError(context, e);
+      if (showErr) {
+        if (DudvConfig.showError != null) {
+          DudvConfig.showError!(e.toString());
         } else {
-          handleError(e);
+          Utils.handleError(context, e);
         }
+      } else {
+        handleError(e);
       }
     }
     isFirst = false;
