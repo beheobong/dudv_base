@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:dudv_base/themes/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
-
 import 'view/guide_permission_view.dart';
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
@@ -92,13 +90,6 @@ class Utils {
     }
   }
 
-  static Future navigatePage(BuildContext context, Widget widget) async {
-    log('---||=======> ${widget.runtimeType}', name: 'NAVIGATE');
-    return await Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => widget,
-    ));
-  }
-
   static void askPermission({
     required BuildContext context,
     required Function handle,
@@ -172,9 +163,11 @@ class Utils {
     return await Permission.storage.isGranted;
   }
 
-  static Future navigatePageRoute(BuildContext context, Widget widget) {
-    return Navigator.of(context).push(PageRouteBuilder(
-        opaque: false, pageBuilder: (BuildContext context, _, __) => widget));
+  static Future navigatePage(BuildContext context, Widget widget) async {
+    log('---||=======> ${widget.runtimeType}', name: 'NAVIGATE');
+    return Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => widget,
+    ));
   }
 
   static void navigateToRoot(
