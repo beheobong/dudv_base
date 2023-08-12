@@ -20,4 +20,5 @@ export 'view/grouped_list.dart';
 export 'themes/styles.dart';
 export 'config.dart';
 export 'lifecycle_event_handler.dart';
+export 'contract.dart';
 export 'package:fluttertoast/fluttertoast.dart';
