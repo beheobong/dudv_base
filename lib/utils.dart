@@ -125,10 +125,12 @@ class Utils {
         } else if (value == PermissionStatus.granted) {
           handle();
         } else {
-          Navigator.of(context, rootNavigator: true).push(PageRouteBuilder(
-              opaque: false,
-              pageBuilder: (BuildContext context, _, __) =>
-                  guidePermissionView ?? GuidePermissionView(permission)));
+          Navigator.of(context, rootNavigator: true).push(
+            PageRouteBuilder(
+                opaque: false,
+                pageBuilder: (BuildContext context, _, __) =>
+                    guidePermissionView ?? GuidePermissionView(permission)),
+          );
         }
       });
     }
@@ -136,27 +138,42 @@ class Utils {
 
   static void askPermissionGPS(BuildContext context, Function handle) {
     askPermission(
-        context: context, handle: handle, permission: Permission.location);
+      context: context,
+      handle: handle,
+      permission: Permission.location,
+    );
   }
 
   static void askPermissionPhotos(BuildContext context, Function handle) {
     askPermission(
-        context: context, handle: handle, permission: Permission.photos);
+      context: context,
+      handle: handle,
+      permission: Permission.photos,
+    );
   }
 
   static void askPermissionCamera(BuildContext context, Function handle) {
     askPermission(
-        context: context, handle: handle, permission: Permission.camera);
+      context: context,
+      handle: handle,
+      permission: Permission.camera,
+    );
   }
 
   static void askPermissionMic(BuildContext context, Function handle) {
     askPermission(
-        context: context, handle: handle, permission: Permission.microphone);
+      context: context,
+      handle: handle,
+      permission: Permission.microphone,
+    );
   }
 
   static void askPermissionStore(BuildContext context, Function handle) {
     askPermission(
-        context: context, handle: handle, permission: Permission.storage);
+      context: context,
+      handle: handle,
+      permission: Permission.storage,
+    );
   }
 
   static Future<bool> hasPermissionStorage() async {
@@ -241,5 +258,50 @@ class Utils {
       debugPrint('$e $stack');
       return null;
     }
+  }
+
+  static Future showBottomSheet(
+    BuildContext context,
+    Widget widget, {
+    bool fixContent = false,
+    bool useRootNavigator = false,
+  }) {
+    double height = MediaQuery.of(context).size.height - 100;
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        useRootNavigator: useRootNavigator,
+        backgroundColor: Colors.transparent,
+        builder: (ctx) => SizedBox(
+            width: double.infinity,
+            height: fixContent ? null : height,
+            child: widget));
+  }
+
+  static Future showArlet(
+    BuildContext context,
+    Widget view, {
+    EdgeInsets? padding,
+    Color? bgColor,
+    BorderSide? side,
+  }) {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: bgColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+              side: side ??
+                  BorderSide(
+                    width: 1,
+                    color: Colors.grey.withOpacity(0.5),
+                  ),
+            ),
+            contentPadding: padding ?? const EdgeInsets.all(15),
+            content: view,
+          );
+        });
   }
 }

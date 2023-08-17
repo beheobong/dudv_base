@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -198,7 +197,7 @@ abstract class AppPresenter {
       width: size ?? double.infinity,
       height: size ?? 100,
       child: Center(
-          child: Platform.isAndroid
+          child: Utils.isAndroid
               ? const CircularProgressIndicator()
               : const CupertinoActivityIndicator(radius: 15)),
     );
@@ -225,7 +224,7 @@ abstract class AppPresenter {
     );
 
     return Center(
-      child: Platform.isAndroid ? androidWidget : iosWidget,
+      child: Utils.isAndroid ? androidWidget : iosWidget,
     );
   }
 
