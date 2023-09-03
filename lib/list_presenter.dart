@@ -12,6 +12,7 @@ mixin ListPresenter {
   bool isFirst = true;
   bool showErr = true;
   BuildContext get context;
+  late final NavigatorState _navigator = Navigator.of(context);
 
   final controller = ScrollController();
   Future apiLoadData({required bool isFirst}) async {}
@@ -50,7 +51,9 @@ mixin ListPresenter {
         if (DudvConfig.showError != null) {
           DudvConfig.showError!(e.toString());
         } else {
-          Utils.handleError(context, e);
+          if (_navigator.mounted) {
+            Utils.handleError(context, e);
+          }
         }
       } else {
         handleError(e);
