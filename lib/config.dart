@@ -1,14 +1,19 @@
+import 'package:dudv_base/dudv_base.dart';
 import 'package:flutter/material.dart';
 
 class DudvConfig {
   static String noDataValue = 'Không có dữ liệu';
   static Widget? loadingView;
   static Color? bgLoadingValue;
+  static Color bgBtn = Styles.colorMain;
+  static double borderBtn = 4;
 
   static void config({
     String? noData,
     Widget? loading,
     Color? bgLoading,
+    Color? bgButton,
+    double? borderButton,
   }) {
     if (noData != null) {
       noDataValue = noData;
@@ -18,6 +23,12 @@ class DudvConfig {
     }
     if (bgLoading != null) {
       bgLoadingValue = bgLoading;
+    }
+    if (bgButton != null) {
+      bgBtn = bgButton;
+    }
+    if (borderButton != null) {
+      borderBtn = borderButton;
     }
   }
 

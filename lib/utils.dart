@@ -290,7 +290,7 @@ class Utils {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: bgColor,
+            backgroundColor: bgColor ?? Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: const BorderRadius.all(Radius.circular(6.0)),
               side: side ??

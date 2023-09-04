@@ -1,6 +1,8 @@
 import 'package:dudv_base/themes/styles.dart';
 import 'package:flutter/material.dart';
 
+import '../config.dart';
+
 class BtnView extends StatelessWidget {
   const BtnView(
       {Key? key,
@@ -30,9 +32,10 @@ class BtnView extends StatelessWidget {
         padding: padding ?? const EdgeInsets.symmetric(vertical: 15),
         decoration: decoration ??
             BoxDecoration(
-                color: Styles.colorMain,
-                borderRadius: BorderRadius.circular(4),
-                border: Border.all(color: Colors.transparent, width: 1)),
+              color: DudvConfig.bgBtn,
+              borderRadius: BorderRadius.circular(DudvConfig.borderBtn),
+              border: Border.all(color: Colors.transparent, width: 1),
+            ),
         child: Text(
           title!,
           style: textStyle ?? Styles.copyStyle(color: Colors.white),
