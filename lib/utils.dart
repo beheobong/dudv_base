@@ -230,8 +230,8 @@ class Utils {
           if (ctx != null) {
             ctx(mContext);
           }
-          return WillPopScope(
-            onWillPop: () async => false,
+          return PopScope(
+            onPopInvoked: (value) => false,
             child: Dialog(
               elevation: 0,
               backgroundColor: bg,

@@ -10,9 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  permission_handler: ^10.4.3
-  fluttertoast: ^8.2.2
-  logger: ^2.0.1
+  permission_handler: ^11.0.1
+  fluttertoast: ^8.2.4
+  logger: ^2.0.2+1
 
 dev_dependencies:
   flutter_lints: ^2.0.3
