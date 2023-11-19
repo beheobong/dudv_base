@@ -24,13 +24,14 @@ mixin Styles {
     FontStyle? fontStyle,
     double? height,
     double? letterSpacing,
+    String? fontFamily,
   }) =>
       TextStyle(
           fontSize: fontSize ?? sizeFont,
           color: color ?? colorDefault,
           fontWeight: fontWeight,
           decoration: decoration ?? TextDecoration.none,
-          fontFamily: font,
+          fontFamily: fontFamily ?? font,
           fontStyle: fontStyle,
           height: height ?? txHeight,
           letterSpacing: letterSpacing);
