@@ -32,8 +32,8 @@ mixin ApiPresenter {
       if (loading) {
         await hideLoading();
       }
-      if (DudvConfig.catchError != null) {
-        DudvConfig.catchError!(e, stack);
+      if (DudvConfig.catchError != null && context.mounted) {
+        DudvConfig.catchError!(context, e, stack);
       }
       debugPrint('$e $stack');
       if (showError) {
