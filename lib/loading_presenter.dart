@@ -16,7 +16,7 @@ mixin LoadingPresenter {
   BuildContext get context;
   BuildContext? _ctx;
 
-  void showLoading({bool useRootNavigator = false}) {
+  void showLoading({bool useRootNavigator = true}) {
     _isShowDialog = true;
     Utils.showModalDialog(
       context: context,
