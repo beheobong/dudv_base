@@ -23,8 +23,7 @@ mixin ApiPresenter {
       if (loading) {
         await hideLoading();
       }
-      if (msgSuc != null) {
-        // ignore: use_build_context_synchronously
+      if (msgSuc != null && context.mounted) {
         Utils.showToastCx(context, title: msgSuc);
       }
       return result;
@@ -39,9 +38,6 @@ mixin ApiPresenter {
       if (showError) {
         if (DudvConfig.showError != null) {
           DudvConfig.showError!(e.toString());
-        } else {
-          // ignore: use_build_context_synchronously
-          Utils.handleError(context, e);
         }
       }
 
