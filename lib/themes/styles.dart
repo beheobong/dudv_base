@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 mixin Styles {
   static const double spacingGrid = 15;
   static String font = 'Roboto';
+  static FontWeight fontWeight = FontWeight.normal;
   static const double sizeFont = 14;
   static const Color bg4 = Color(0xff1A1A1A);
   static const double sizeHorizontal = 20;
@@ -18,7 +19,7 @@ mixin Styles {
 
   static TextStyle copyStyle({
     Color? color,
-    FontWeight fontWeight = FontWeight.normal,
+    FontWeight? fontWeight,
     double? fontSize,
     TextDecoration? decoration,
     FontStyle? fontStyle,
@@ -29,7 +30,7 @@ mixin Styles {
       TextStyle(
           fontSize: fontSize ?? sizeFont,
           color: color ?? colorDefault,
-          fontWeight: fontWeight,
+          fontWeight: fontWeight ?? fontWeight,
           decoration: decoration ?? TextDecoration.none,
           fontFamily: fontFamily ?? font,
           fontStyle: fontStyle,
@@ -69,6 +70,7 @@ mixin Styles {
     double? sizeAppBar,
     String? fontFamily,
     double? height,
+    FontWeight? weight,
   }) {
     if (color != null) {
       colorDefault = color;
@@ -81,6 +83,9 @@ mixin Styles {
     }
     if (height != null) {
       txHeight = height;
+    }
+    if (weight != null) {
+      fontWeight = weight;
     }
   }
 
