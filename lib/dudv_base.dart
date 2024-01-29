@@ -16,7 +16,6 @@ export 'view/title_require_view.dart';
 export 'view/loading_view.dart';
 export 'view/btn_view.dart';
 export 'view/action_noti_view.dart';
-export 'view/grouped_list.dart';
 export 'themes/styles.dart';
 export 'config.dart';
 export 'lifecycle_event_handler.dart';
