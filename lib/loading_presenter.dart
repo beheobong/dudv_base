@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'config.dart';
 
 mixin LoadingPresenter {
-  bool _isShowDialog = false;
+  bool isShowDialog = false;
 
   static Color? _color;
 
@@ -17,7 +17,7 @@ mixin LoadingPresenter {
   BuildContext? _ctx;
 
   void showLoading({bool useRootNavigator = true}) {
-    _isShowDialog = true;
+    isShowDialog = true;
     Utils.showModalDialog(
       context: context,
       useRootNavigator: useRootNavigator,
@@ -43,12 +43,12 @@ mixin LoadingPresenter {
 
   Future hideLoading() async {
     try {
-      if (!_isShowDialog || _ctx == null) return;
+      if (!isShowDialog || _ctx == null) return;
       return Future.delayed(const Duration(milliseconds: 300), () {
         if (Navigator.of(_ctx!).canPop()) {
           Navigator.of(_ctx!).pop();
         }
-        _isShowDialog = false;
+        isShowDialog = false;
       });
     } catch (e, stack) {
       debugPrint('$e $stack');
